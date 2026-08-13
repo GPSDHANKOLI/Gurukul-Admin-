@@ -7,12 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* Dynamic Cyber Theme Variables */
         :root {
-            --neon-blue: #00f3ff;
-            --neon-purple: #bc13fe;
+            --neon-primary: #00f3ff;
+            --neon-secondary: #bc13fe;
             --bg-dark: #030a16;
             --glass-bg: rgba(10, 20, 40, 0.55);
+            --grid-color: rgba(0, 243, 255, 0.05);
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-dark);
@@ -23,16 +27,18 @@
             padding: 40px 20px;
             color: #fff;
             overflow-x: hidden;
+            transition: background-color 0.4s ease; /* Fast transition for 0.5s interval */
         }
 
         /* Animated Futuristic Background */
         .cyber-grid {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background: linear-gradient(var(--grid-color) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px; z-index: -2;
             transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
             animation: gridMove 10s linear infinite;
+            transition: background 0.4s ease;
         }
         @keyframes gridMove {
             0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
@@ -40,15 +46,17 @@
         }
         .glow-orb {
             position: fixed; width: 400px; height: 400px;
-            background: radial-gradient(circle, var(--neon-purple), transparent 60%);
+            background: radial-gradient(circle, var(--neon-secondary), transparent 60%);
             top: 10%; left: 10%; filter: blur(100px); opacity: 0.3; z-index: -1;
             animation: orbFloat 8s ease-in-out infinite alternate;
+            transition: background 0.4s ease;
         }
         .glow-orb-2 {
             position: fixed; width: 300px; height: 300px;
-            background: radial-gradient(circle, var(--neon-blue), transparent 60%);
+            background: radial-gradient(circle, var(--neon-primary), transparent 60%);
             bottom: 10%; right: 10%; filter: blur(100px); opacity: 0.2; z-index: -1;
             animation: orbFloat 6s ease-in-out infinite alternate-reverse;
+            transition: background 0.4s ease;
         }
         @keyframes orbFloat { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
 
@@ -56,116 +64,104 @@
         .dashboard-container {
             width: 100%; max-width: 1050px;
             background: var(--glass-bg);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            border: 1px solid var(--neon-primary);
             backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
             border-radius: 20px; padding: 40px;
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.05), inset 0 0 20px rgba(0, 243, 255, 0.05);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
             position: relative;
+            transition: all 0.4s ease;
         }
         .dashboard-container::before {
             content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
+            transition: background 0.4s ease;
         }
 
         /* Top Bar Features */
         .top-bar {
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
             margin-bottom: 20px; font-family: 'Orbitron', sans-serif; font-size: 12px;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2); padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px;
         }
         .sys-status span {
-            color: #00ff88; text-shadow: 0 0 5px #00ff88; animation: blink 1.5s infinite;
+            color: var(--neon-primary); text-shadow: 0 0 5px var(--neon-primary); animation: blink 1.5s infinite;
+            transition: color 0.4s ease, text-shadow 0.4s ease;
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         
-        .live-clock { color: var(--neon-blue); font-size: 14px; letter-spacing: 2px; }
+        .live-clock { color: var(--neon-primary); font-size: 15px; letter-spacing: 2px; transition: color 0.4s ease; }
         
-        .fullscreen-btn {
-            background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue);
-            padding: 5px 15px; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif;
-            transition: 0.3s;
+        .top-controls {
+            display: flex; gap: 15px; align-items: center;
         }
-        .fullscreen-btn:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 10px var(--neon-blue); }
+
+        .cyber-btn {
+            background: rgba(0,0,0,0.5); border: 1px solid var(--neon-primary); color: var(--neon-primary);
+            padding: 5px 15px; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif;
+            font-size: 12px; transition: 0.3s;
+        }
+        .cyber-btn:hover, .cyber-btn.active { background: var(--neon-primary); color: #000; box-shadow: 0 0 10px var(--neon-primary); }
 
         /* Header */
         .header { text-align: center; margin-bottom: 40px; }
-        .logo { width: 90px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--neon-blue)); animation: pulseLogo 3s infinite; }
-        @keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--neon-blue)); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--neon-blue)); } }
-        h1 { font-family: 'Orbitron', sans-serif; font-size: 30px; color: #fff; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; text-shadow: 0 0 10px var(--neon-blue); }
+        .logo { width: 90px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--neon-primary)); animation: pulseLogo 3s infinite; transition: filter 0.4s ease; }
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--neon-primary)); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--neon-primary)); } }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 30px; color: #fff; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; text-shadow: 0 0 10px var(--neon-primary); transition: text-shadow 0.4s ease; }
         .subtitle { font-size: 14px; color: #8892b0; letter-spacing: 2px; text-transform: uppercase; }
 
         /* Cards Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        
         .cyber-card {
             position: relative; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 15px; padding: 25px; cursor: pointer; color: #fff;
+            border-radius: 15px; padding: 25px; cursor: pointer; color: #fff; text-decoration: none;
             display: flex; align-items: center; overflow: hidden; transition: all 0.4s; z-index: 1;
         }
         .cyber-card::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transform: skewX(-25deg); transition: 0.5s; z-index: -1;
         }
         .cyber-card:hover::before { left: 150%; }
-        .cyber-card:hover { transform: translateY(-5px); background: rgba(0, 243, 255, 0.05); border-color: var(--neon-blue); box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
+        
+        /* The magic: Hover takes the current primary neon color */
+        .cyber-card:hover { 
+            transform: translateY(-5px); 
+            background: rgba(255, 255, 255, 0.05); 
+            border-color: var(--neon-primary); 
+            box-shadow: 0 0 20px var(--grid-color); 
+        }
         
         .card-icon {
-            width: 50px; height: 50px; background: rgba(0, 243, 255, 0.1); border-radius: 12px;
+            width: 50px; height: 50px; background: rgba(255, 255, 255, 0.05); border-radius: 12px;
             display: flex; align-items: center; justify-content: center; font-size: 22px;
-            margin-right: 15px; border: 1px solid rgba(0, 243, 255, 0.2); transition: 0.3s;
+            margin-right: 15px; border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s;
         }
-        .cyber-card:hover .card-icon { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px var(--neon-blue); }
+        
+        .cyber-card:hover .card-icon { 
+            background: var(--neon-primary); 
+            color: #000; 
+            box-shadow: 0 0 15px var(--neon-primary); 
+            border-color: var(--neon-primary);
+        }
+        
         .card-info h3 { font-family: 'Orbitron', sans-serif; font-size: 15px; margin-bottom: 4px; color: #e6f1ff; }
         .card-info p { font-size: 12px; color: #8892b0; }
 
-        /* Holographic OTP Modal */
-        #otpModal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(3, 10, 22, 0.85); backdrop-filter: blur(10px); z-index: 1000;
-            align-items: center; justify-content: center;
-        }
-        .modal-box {
-            background: rgba(10, 20, 40, 0.8); border: 1px solid var(--neon-blue);
-            padding: 40px; border-radius: 15px; width: 90%; max-width: 400px; text-align: center;
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);
-            position: relative; overflow: hidden;
-        }
-        .modal-box::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, var(--neon-blue), transparent 30%);
-            animation: rotateBg 4s linear infinite; z-index: -1; opacity: 0.1;
-        }
-        @keyframes rotateBg { 100% { transform: rotate(360deg); } }
-        
-        .modal-box h3 { font-family: 'Orbitron', sans-serif; color: var(--neon-blue); margin-bottom: 10px; font-size: 20px; }
-        .modal-box p { color: #8892b0; font-size: 12px; margin-bottom: 25px; }
-        
-        .otp-input {
-            width: 100%; padding: 15px; font-size: 24px; text-align: center; letter-spacing: 10px;
-            background: rgba(0, 0, 0, 0.5); border: 1px solid var(--neon-blue); border-radius: 8px;
-            color: #00ff88; font-family: 'Orbitron', sans-serif; margin-bottom: 20px; outline: none;
-            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.2); transition: 0.3s;
-        }
-        .otp-input:focus { border-color: #00ff88; box-shadow: 0 0 15px rgba(0, 255, 136, 0.4), inset 0 0 10px rgba(0, 255, 136, 0.2); }
-        
-        .btn-verify {
-            width: 100%; padding: 15px; background: transparent; color: var(--neon-blue);
-            border: 1px solid var(--neon-blue); border-radius: 8px; font-size: 16px; font-family: 'Orbitron', sans-serif;
-            cursor: pointer; transition: 0.3s;
-        }
-        .btn-verify:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 15px var(--neon-blue); }
-        
-        .error-msg { color: #ff0055; font-size: 13px; margin-top: 15px; display: none; text-shadow: 0 0 5px #ff0055; }
-        .cancel-btn { background: none; border: none; color: #8892b0; font-size: 12px; margin-top: 20px; cursor: pointer; text-decoration: underline; }
-        .cancel-btn:hover { color: #fff; }
-
         /* Footer */
         .cyber-footer {
-            border-top: 1px solid rgba(0, 243, 255, 0.2); padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;
             display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; text-align: center;
         }
         .footer-data { font-size: 12px; color: #8892b0; }
-        .footer-data span { color: var(--neon-blue); font-weight: 600; font-family: 'Orbitron', sans-serif; margin-left: 5px; }
+        .footer-data span { color: var(--neon-primary); font-weight: 600; font-family: 'Orbitron', sans-serif; margin-left: 5px; transition: color 0.4s ease; }
+
+        @media (max-width: 768px) {
+            .dashboard-container { padding: 30px 20px; }
+            h1 { font-size: 22px; }
+            .cyber-footer { flex-direction: column; }
+            .top-bar { justify-content: center; flex-direction: column; }
+        }
     </style>
 </head>
 <body>
@@ -178,9 +174,13 @@
         
         <!-- Top Bar Features -->
         <div class="top-bar">
-            <div class="sys-status">SYSTEM: <span>ONLINE & SECURE</span></div>
+            <div class="sys-status">SYSTEM: <span id="autoStatus">AUTO THEME (ACTIVE)</span></div>
             <div class="live-clock" id="clock">00:00:00</div>
-            <button class="fullscreen-btn" onclick="toggleFullScreen()">[ FULLSCREEN ]</button>
+            
+            <div class="top-controls">
+                <button class="cyber-btn" id="toggleAutoBtn" onclick="toggleAutoTheme()">[ STOP AUTO ]</button>
+                <button class="cyber-btn" onclick="toggleFullScreen()">[ FULLSCREEN ]</button>
+            </div>
         </div>
 
         <div class="header">
@@ -190,50 +190,55 @@
         </div>
 
         <div class="grid">
-            <!-- 1. Admission -->
-            <div class="cyber-card" onclick="openSecurePortal('https://script.google.com/macros/s/AKfycby7jC80yVGPERc3m-t6iHaz47NilElqeMaTtDBekIrc_wC3UQg94KhU2kL5gh6N90Vy/exec?page=admin')">
+            
+            <a href="https://script.google.com/macros/s/AKfycbwHNfP42OCoYa08fSLpSbDmT4cFmOgJQb3g4QVJ-4clGZ6iJvVUDdMtyUOXFjAyVhg/exec" class="cyber-card">
+                <div class="card-icon">📖</div>
+                <div class="card-info">
+                    <h3>होमवर्क पोर्टल</h3>
+                    <p>होमवर्क और असाइनमेंट अपलोड करें</p>
+                </div>
+            </a>
+
+            <a href="https://script.google.com/macros/s/AKfycby7jC80yVGPERc3m-t6iHaz47NilElqeMaTtDBekIrc_wC3UQg94KhU2kL5gh6N90Vy/exec?page=admin" class="cyber-card">
                 <div class="card-icon">🎓</div>
                 <div class="card-info">
                     <h3>स्कूल एडमिशन</h3>
                     <p>एडमिशन डेटाबेस एक्सेस करें</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- 2. Scholarship -->
-            <div class="cyber-card" onclick="openSecurePortal('https://script.google.com/macros/s/AKfycbyNb8HXMppE2yN3h61hhPEYN3gBacGJjRWCLgCVMcNvry1XCtsPY1DYciWbGd_gZoJVIg/exec?page=admin&hl=en-US')">
+            <a href="https://script.google.com/macros/s/AKfycbyNb8HXMppE2yN3h61hhPEYN3gBacGJjRWCLgCVMcNvry1XCtsPY1DYciWbGd_gZoJVIg/exec?page=admin&hl=en-US" class="cyber-card">
                 <div class="card-icon">📜</div>
                 <div class="card-info">
                     <h3>स्कॉलरशिप पोर्टल</h3>
                     <p>छात्रवृत्ति आवेदन जांचें</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- 3. Result -->
-            <div class="cyber-card" onclick="openSecurePortal('https://script.google.com/macros/s/AKfycbx3aTQYSBiyskSrF_IP3ar0i_ESHkNoPbwqLNeGF7o2P-7u-pERlHYxttlhhCLpf40j/exec?page=admin')">
+            <a href="https://script.google.com/macros/s/AKfycbx3aTQYSBiyskSrF_IP3ar0i_ESHkNoPbwqLNeGF7o2P-7u-pERlHYxttlhhCLpf40j/exec?page=admin" class="cyber-card">
                 <div class="card-icon">📊</div>
                 <div class="card-info">
                     <h3>रिजल्ट पोर्टल</h3>
                     <p>परिणाम और मार्कशीट अपडेट</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- 4. Fees -->
-            <div class="cyber-card" onclick="openSecurePortal('https://script.google.com/macros/s/AKfycbxZ_CYQRWBqrw7UQMXdzDl4LUIBOIy-SmqBSOHcG631HLPv57bcBz2nvr15Vz9S3KXc/exec?page=admin')">
+            <a href="https://script.google.com/macros/s/AKfycbxZ_CYQRWBqrw7UQMXdzDl4LUIBOIy-SmqBSOHcG631HLPv57bcBz2nvr15Vz9S3KXc/exec?page=admin" class="cyber-card">
                 <div class="card-icon">💰</div>
                 <div class="card-info">
                     <h3>फीस पोर्टल</h3>
                     <p>फीस मैनेजमेंट सिस्टम</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- 5. Exam -->
-            <div class="cyber-card" onclick="openSecurePortal('https://share.google/oN3qzKU8uKLLtPw83?page=admin')">
+            <a href="https://share.google/oN3qzKU8uKLLtPw83?page=admin" class="cyber-card">
                 <div class="card-icon">📝</div>
                 <div class="card-info">
                     <h3>हाफ ईयरली एग्जाम</h3>
                     <p>परीक्षा डेटाबेस कंट्रोल</p>
                 </div>
-            </div>
+            </a>
+
         </div>
 
         <div class="cyber-footer">
@@ -243,20 +248,8 @@
         </div>
     </div>
 
-    <!-- OTP Security Modal -->
-    <div id="otpModal">
-        <div class="modal-box">
-            <h3>एक्सेस डिनाइड (SECURE ZONE)</h3>
-            <p>एडमिन वेरिफिकेशन आवश्यक। OTP आपकी रजिस्टर्ड ईमेल पर भेजा जा रहा है...</p>
-            <input type="text" id="otpInput" class="otp-input" placeholder="------" maxlength="6" autocomplete="off">
-            <button class="btn-verify" onclick="verifyOTP()">सत्यापित करें (VERIFY)</button>
-            <div id="errorMessage" class="error-msg">अमान्य OTP! एक्सेस ब्लॉक कर दिया गया है।</div>
-            <button class="cancel-btn" onclick="closeModal()">प्रक्रिया रद्द करें</button>
-        </div>
-    </div>
-
     <script>
-        // 1. Live Cyber Clock Function
+        // 1. Live Cyber Clock
         function updateClock() {
             const now = new Date();
             const time = now.toLocaleTimeString('en-US', { hour12: false });
@@ -266,53 +259,81 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // 2. Full Screen Toggle Function
+        // 2. Full Screen Toggle
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-                });
+                document.documentElement.requestFullscreen().catch(err => console.log(err));
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
+                if (document.exitFullscreen) document.exitFullscreen();
             }
         }
 
-        // 3. Universal OTP Security System
-        const emailScriptUrl = "https://script.google.com/macros/s/AKfycbz6RycF0JjpC0c9aQek0PINN2wLxLSblagnhd04B7pwr47oi0silPE2Di_A_vjoFRD8dA/exec"; 
-        let generatedOTP = "";
-        let targetAdminUrl = ""; 
+        // 3. Cyber Auto Theme Engine (20 Themes)
+        const cyberThemes = [
+            { primary: '#00f3ff', secondary: '#bc13fe', bgDark: '#030a16', glassBg: 'rgba(10, 20, 40, 0.6)', grid: 'rgba(0, 243, 255, 0.08)' }, // 1. Cyber Blue
+            { primary: '#00ff41', secondary: '#008f11', bgDark: '#000000', glassBg: 'rgba(0, 20, 0, 0.7)', grid: 'rgba(0, 255, 65, 0.08)' }, // 2. Matrix
+            { primary: '#ff003c', secondary: '#ff5500', bgDark: '#120000', glassBg: 'rgba(40, 0, 0, 0.7)', grid: 'rgba(255, 0, 60, 0.08)' }, // 3. Danger Red
+            { primary: '#f9a826', secondary: '#ff007f', bgDark: '#1a0b2e', glassBg: 'rgba(30, 10, 50, 0.7)', grid: 'rgba(249, 168, 38, 0.08)' }, // 4. Synthwave
+            { primary: '#eaff00', secondary: '#00ffaa', bgDark: '#0d1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(234, 255, 0, 0.08)' }, // 5. Toxic Yellow
+            { primary: '#ff00ff', secondary: '#8a2be2', bgDark: '#1a001a', glassBg: 'rgba(40, 0, 40, 0.7)', grid: 'rgba(255, 0, 255, 0.08)' }, // 6. Deep Purple
+            { primary: '#ffffff', secondary: '#00e5ff', bgDark: '#001a1a', glassBg: 'rgba(0, 40, 40, 0.6)', grid: 'rgba(255, 255, 255, 0.1)' }, // 7. Ice White
+            { primary: '#ff1493', secondary: '#ffb6c1', bgDark: '#1a000d', glassBg: 'rgba(40, 0, 20, 0.7)', grid: 'rgba(255, 20, 147, 0.08)' }, // 8. Neon Pink
+            { primary: '#00ffaa', secondary: '#008080', bgDark: '#001a13', glassBg: 'rgba(0, 40, 30, 0.7)', grid: 'rgba(0, 255, 170, 0.08)' }, // 9. Mint
+            { primary: '#ff4500', secondary: '#8b0000', bgDark: '#1a0400', glassBg: 'rgba(40, 10, 0, 0.7)', grid: 'rgba(255, 69, 0, 0.08)' }, // 10. Inferno
+            { primary: '#ffd700', secondary: '#b8860b', bgDark: '#1a1800', glassBg: 'rgba(40, 35, 0, 0.7)', grid: 'rgba(255, 215, 0, 0.08)' }, // 11. Gold Rush
+            { primary: '#00bfff', secondary: '#1e90ff', bgDark: '#000b1a', glassBg: 'rgba(0, 20, 40, 0.7)', grid: 'rgba(0, 191, 255, 0.08)' }, // 12. Deep Ocean
+            { primary: '#7fff00', secondary: '#32cd32', bgDark: '#0a1a00', glassBg: 'rgba(15, 40, 0, 0.7)', grid: 'rgba(127, 255, 0, 0.08)' }, // 13. Venom Green
+            { primary: '#8a2be2', secondary: '#4b0082', bgDark: '#0b001a', glassBg: 'rgba(20, 0, 40, 0.7)', grid: 'rgba(138, 43, 226, 0.08)' }, // 14. Amethyst
+            { primary: '#ff8c00', secondary: '#ff0000', bgDark: '#1a0a00', glassBg: 'rgba(40, 15, 0, 0.7)', grid: 'rgba(255, 140, 0, 0.08)' }, // 15. Magma
+            { primary: '#00ffff', secondary: '#0000ff', bgDark: '#00001a', glassBg: 'rgba(0, 0, 40, 0.7)', grid: 'rgba(0, 255, 255, 0.08)' }, // 16. Electric Cyan
+            { primary: '#adff2f', secondary: '#ffff00', bgDark: '#0f1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(173, 255, 47, 0.08)' }, // 17. Radioactive
+            { primary: '#ff69b4', secondary: '#ff1493', bgDark: '#1a0011', glassBg: 'rgba(40, 0, 25, 0.7)', grid: 'rgba(255, 105, 180, 0.08)' }, // 18. Hot Pink
+            { primary: '#c0c0c0', secondary: '#808080', bgDark: '#111111', glassBg: 'rgba(40, 40, 40, 0.7)', grid: 'rgba(192, 192, 192, 0.08)' }, // 19. Silver Chrome
+            { primary: '#ff00aa', secondary: '#5500ff', bgDark: '#11001a', glassBg: 'rgba(30, 0, 40, 0.7)', grid: 'rgba(255, 0, 170, 0.08)' }  // 20. CyberPunk 2077
+        ];
 
-        function openSecurePortal(url) {
-            targetAdminUrl = url;
-            generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-            
-            document.getElementById('otpModal').style.display = 'flex';
-            document.getElementById('otpInput').value = '';
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('otpInput').focus();
+        let themeIndex = 0;
+        let autoThemeInterval;
+        let isAutoOn = true;
 
-            // Send OTP via your Google Apps Script
-            fetch(emailScriptUrl + "?action=sendOTP&otp=" + generatedOTP, { mode: 'no-cors' })
-            .catch(err => console.error("Error:", err));
+        function applyTheme(index) {
+            let t = cyberThemes[index];
+            document.documentElement.style.setProperty('--neon-primary', t.primary);
+            document.documentElement.style.setProperty('--neon-secondary', t.secondary);
+            document.documentElement.style.setProperty('--bg-dark', t.bgDark);
+            document.documentElement.style.setProperty('--glass-bg', t.glassBg);
+            document.documentElement.style.setProperty('--grid-color', t.grid);
         }
 
-        function verifyOTP() {
-            const userInput = document.getElementById('otpInput').value;
-            if (userInput === generatedOTP && generatedOTP !== "") {
-                window.open(targetAdminUrl, "_self"); 
-                closeModal();
-            } else {
-                document.getElementById('errorMessage').style.display = 'block';
-            }
+        function startAutoTheme() {
+            autoThemeInterval = setInterval(() => {
+                themeIndex = (themeIndex + 1) % cyberThemes.length;
+                applyTheme(themeIndex);
+            }, 500); // 0.5 Seconds
+            document.getElementById('autoStatus').innerText = "AUTO THEME (ACTIVE)";
+            document.getElementById('toggleAutoBtn').innerText = "[ STOP AUTO ]";
+            document.getElementById('toggleAutoBtn').classList.add('active');
         }
 
-        function closeModal() {
-            document.getElementById('otpModal').style.display = 'none';
-            generatedOTP = "";
-            targetAdminUrl = "";
+        function stopAutoTheme() {
+            clearInterval(autoThemeInterval);
+            document.getElementById('autoStatus').innerText = "MANUAL MODE (PAUSED)";
+            document.getElementById('toggleAutoBtn').innerText = "[ START AUTO ]";
+            document.getElementById('toggleAutoBtn').classList.remove('active');
         }
+
+        function toggleAutoTheme() {
+            isAutoOn = !isAutoOn;
+            if (isAutoOn) startAutoTheme();
+            else stopAutoTheme();
+        }
+
+        // Start automatically when page loads
+        window.onload = () => {
+            applyTheme(0);
+            startAutoTheme();
+        };
     </script>
 </body>
 </html>
+
