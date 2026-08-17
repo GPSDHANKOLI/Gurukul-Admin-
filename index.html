@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>अल्ट्रा-एडवांस्ड एडमिन कंट्रोल - गुरुकुल स्कूल</title>
+    <title>GYRUKUL SCHOOL DHANKOLI ( ADMIN PORTAL)</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +27,7 @@
             padding: 40px 20px;
             color: #fff;
             overflow-x: hidden;
-            transition: background-color 0.4s ease; /* Fast transition for 0.5s interval */
+            transition: background-color 0.4s ease;
         }
 
         /* Animated Futuristic Background */
@@ -124,7 +124,6 @@
         }
         .cyber-card:hover::before { left: 150%; }
         
-        /* The magic: Hover takes the current primary neon color */
         .cyber-card:hover { 
             transform: translateY(-5px); 
             background: rgba(255, 255, 255, 0.05); 
@@ -218,7 +217,7 @@
             <a href="https://script.google.com/macros/s/AKfycbx3aTQYSBiyskSrF_IP3ar0i_ESHkNoPbwqLNeGF7o2P-7u-pERlHYxttlhhCLpf40j/exec?page=admin" class="cyber-card">
                 <div class="card-icon">📊</div>
                 <div class="card-info">
-                    <h3>रिजल्ट पोर्टल</h3>
+                    <h3> स्कॉलरशिप रिजल्ट पोर्टल</h3>
                     <p>परिणाम और मार्कशीट अपडेट</p>
                 </div>
             </a>
@@ -234,8 +233,17 @@
             <a href="https://share.google/oN3qzKU8uKLLtPw83?page=admin" class="cyber-card">
                 <div class="card-icon">📝</div>
                 <div class="card-info">
-                    <h3>हाफ ईयरली एग्जाम</h3>
+                    <h3>स्कूल परीक्षा और टेस्ट डेटा</h3>
                     <p>परीक्षा डेटाबेस कंट्रोल</p>
+                </div>
+            </a>
+
+            <!-- नया ID कार्ड जनरेटर बटन -->
+            <a href="https://gpsdhankoli.github.io/I-d-card/" class="cyber-card">
+                <div class="card-icon">🪪</div>
+                <div class="card-info">
+                    <h3>स्मार्ट ID कार्ड</h3>
+                    <p>छात्र ID Card जनरेट करें</p>
                 </div>
             </a>
 
@@ -249,7 +257,6 @@
     </div>
 
     <script>
-        // 1. Live Cyber Clock
         function updateClock() {
             const now = new Date();
             const time = now.toLocaleTimeString('en-US', { hour12: false });
@@ -259,7 +266,6 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // 2. Full Screen Toggle
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen().catch(err => console.log(err));
@@ -268,28 +274,27 @@
             }
         }
 
-        // 3. Cyber Auto Theme Engine (20 Themes)
         const cyberThemes = [
-            { primary: '#00f3ff', secondary: '#bc13fe', bgDark: '#030a16', glassBg: 'rgba(10, 20, 40, 0.6)', grid: 'rgba(0, 243, 255, 0.08)' }, // 1. Cyber Blue
-            { primary: '#00ff41', secondary: '#008f11', bgDark: '#000000', glassBg: 'rgba(0, 20, 0, 0.7)', grid: 'rgba(0, 255, 65, 0.08)' }, // 2. Matrix
-            { primary: '#ff003c', secondary: '#ff5500', bgDark: '#120000', glassBg: 'rgba(40, 0, 0, 0.7)', grid: 'rgba(255, 0, 60, 0.08)' }, // 3. Danger Red
-            { primary: '#f9a826', secondary: '#ff007f', bgDark: '#1a0b2e', glassBg: 'rgba(30, 10, 50, 0.7)', grid: 'rgba(249, 168, 38, 0.08)' }, // 4. Synthwave
-            { primary: '#eaff00', secondary: '#00ffaa', bgDark: '#0d1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(234, 255, 0, 0.08)' }, // 5. Toxic Yellow
-            { primary: '#ff00ff', secondary: '#8a2be2', bgDark: '#1a001a', glassBg: 'rgba(40, 0, 40, 0.7)', grid: 'rgba(255, 0, 255, 0.08)' }, // 6. Deep Purple
-            { primary: '#ffffff', secondary: '#00e5ff', bgDark: '#001a1a', glassBg: 'rgba(0, 40, 40, 0.6)', grid: 'rgba(255, 255, 255, 0.1)' }, // 7. Ice White
-            { primary: '#ff1493', secondary: '#ffb6c1', bgDark: '#1a000d', glassBg: 'rgba(40, 0, 20, 0.7)', grid: 'rgba(255, 20, 147, 0.08)' }, // 8. Neon Pink
-            { primary: '#00ffaa', secondary: '#008080', bgDark: '#001a13', glassBg: 'rgba(0, 40, 30, 0.7)', grid: 'rgba(0, 255, 170, 0.08)' }, // 9. Mint
-            { primary: '#ff4500', secondary: '#8b0000', bgDark: '#1a0400', glassBg: 'rgba(40, 10, 0, 0.7)', grid: 'rgba(255, 69, 0, 0.08)' }, // 10. Inferno
-            { primary: '#ffd700', secondary: '#b8860b', bgDark: '#1a1800', glassBg: 'rgba(40, 35, 0, 0.7)', grid: 'rgba(255, 215, 0, 0.08)' }, // 11. Gold Rush
-            { primary: '#00bfff', secondary: '#1e90ff', bgDark: '#000b1a', glassBg: 'rgba(0, 20, 40, 0.7)', grid: 'rgba(0, 191, 255, 0.08)' }, // 12. Deep Ocean
-            { primary: '#7fff00', secondary: '#32cd32', bgDark: '#0a1a00', glassBg: 'rgba(15, 40, 0, 0.7)', grid: 'rgba(127, 255, 0, 0.08)' }, // 13. Venom Green
-            { primary: '#8a2be2', secondary: '#4b0082', bgDark: '#0b001a', glassBg: 'rgba(20, 0, 40, 0.7)', grid: 'rgba(138, 43, 226, 0.08)' }, // 14. Amethyst
-            { primary: '#ff8c00', secondary: '#ff0000', bgDark: '#1a0a00', glassBg: 'rgba(40, 15, 0, 0.7)', grid: 'rgba(255, 140, 0, 0.08)' }, // 15. Magma
-            { primary: '#00ffff', secondary: '#0000ff', bgDark: '#00001a', glassBg: 'rgba(0, 0, 40, 0.7)', grid: 'rgba(0, 255, 255, 0.08)' }, // 16. Electric Cyan
-            { primary: '#adff2f', secondary: '#ffff00', bgDark: '#0f1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(173, 255, 47, 0.08)' }, // 17. Radioactive
-            { primary: '#ff69b4', secondary: '#ff1493', bgDark: '#1a0011', glassBg: 'rgba(40, 0, 25, 0.7)', grid: 'rgba(255, 105, 180, 0.08)' }, // 18. Hot Pink
-            { primary: '#c0c0c0', secondary: '#808080', bgDark: '#111111', glassBg: 'rgba(40, 40, 40, 0.7)', grid: 'rgba(192, 192, 192, 0.08)' }, // 19. Silver Chrome
-            { primary: '#ff00aa', secondary: '#5500ff', bgDark: '#11001a', glassBg: 'rgba(30, 0, 40, 0.7)', grid: 'rgba(255, 0, 170, 0.08)' }  // 20. CyberPunk 2077
+            { primary: '#00f3ff', secondary: '#bc13fe', bgDark: '#030a16', glassBg: 'rgba(10, 20, 40, 0.6)', grid: 'rgba(0, 243, 255, 0.08)' },
+            { primary: '#00ff41', secondary: '#008f11', bgDark: '#000000', glassBg: 'rgba(0, 20, 0, 0.7)', grid: 'rgba(0, 255, 65, 0.08)' },
+            { primary: '#ff003c', secondary: '#ff5500', bgDark: '#120000', glassBg: 'rgba(40, 0, 0, 0.7)', grid: 'rgba(255, 0, 60, 0.08)' },
+            { primary: '#f9a826', secondary: '#ff007f', bgDark: '#1a0b2e', glassBg: 'rgba(30, 10, 50, 0.7)', grid: 'rgba(249, 168, 38, 0.08)' },
+            { primary: '#eaff00', secondary: '#00ffaa', bgDark: '#0d1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(234, 255, 0, 0.08)' },
+            { primary: '#ff00ff', secondary: '#8a2be2', bgDark: '#1a001a', glassBg: 'rgba(40, 0, 40, 0.7)', grid: 'rgba(255, 0, 255, 0.08)' },
+            { primary: '#ffffff', secondary: '#00e5ff', bgDark: '#001a1a', glassBg: 'rgba(0, 40, 40, 0.6)', grid: 'rgba(255, 255, 255, 0.1)' },
+            { primary: '#ff1493', secondary: '#ffb6c1', bgDark: '#1a000d', glassBg: 'rgba(40, 0, 20, 0.7)', grid: 'rgba(255, 20, 147, 0.08)' },
+            { primary: '#00ffaa', secondary: '#008080', bgDark: '#001a13', glassBg: 'rgba(0, 40, 30, 0.7)', grid: 'rgba(0, 255, 170, 0.08)' },
+            { primary: '#ff4500', secondary: '#8b0000', bgDark: '#1a0400', glassBg: 'rgba(40, 10, 0, 0.7)', grid: 'rgba(255, 69, 0, 0.08)' },
+            { primary: '#ffd700', secondary: '#b8860b', bgDark: '#1a1800', glassBg: 'rgba(40, 35, 0, 0.7)', grid: 'rgba(255, 215, 0, 0.08)' },
+            { primary: '#00bfff', secondary: '#1e90ff', bgDark: '#000b1a', glassBg: 'rgba(0, 20, 40, 0.7)', grid: 'rgba(0, 191, 255, 0.08)' },
+            { primary: '#7fff00', secondary: '#32cd32', bgDark: '#0a1a00', glassBg: 'rgba(15, 40, 0, 0.7)', grid: 'rgba(127, 255, 0, 0.08)' },
+            { primary: '#8a2be2', secondary: '#4b0082', bgDark: '#0b001a', glassBg: 'rgba(20, 0, 40, 0.7)', grid: 'rgba(138, 43, 226, 0.08)' },
+            { primary: '#ff8c00', secondary: '#ff0000', bgDark: '#1a0a00', glassBg: 'rgba(40, 15, 0, 0.7)', grid: 'rgba(255, 140, 0, 0.08)' },
+            { primary: '#00ffff', secondary: '#0000ff', bgDark: '#00001a', glassBg: 'rgba(0, 0, 40, 0.7)', grid: 'rgba(0, 255, 255, 0.08)' },
+            { primary: '#adff2f', secondary: '#ffff00', bgDark: '#0f1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(173, 255, 47, 0.08)' },
+            { primary: '#ff69b4', secondary: '#ff1493', bgDark: '#1a0011', glassBg: 'rgba(40, 0, 25, 0.7)', grid: 'rgba(255, 105, 180, 0.08)' },
+            { primary: '#c0c0c0', secondary: '#808080', bgDark: '#111111', glassBg: 'rgba(40, 40, 40, 0.7)', grid: 'rgba(192, 192, 192, 0.08)' },
+            { primary: '#ff00aa', secondary: '#5500ff', bgDark: '#11001a', glassBg: 'rgba(30, 0, 40, 0.7)', grid: 'rgba(255, 0, 170, 0.08)' }
         ];
 
         let themeIndex = 0;
@@ -309,7 +314,7 @@
             autoThemeInterval = setInterval(() => {
                 themeIndex = (themeIndex + 1) % cyberThemes.length;
                 applyTheme(themeIndex);
-            }, 500); // 0.5 Seconds
+            }, 500); 
             document.getElementById('autoStatus').innerText = "AUTO THEME (ACTIVE)";
             document.getElementById('toggleAutoBtn').innerText = "[ STOP AUTO ]";
             document.getElementById('toggleAutoBtn').classList.add('active');
@@ -328,7 +333,6 @@
             else stopAutoTheme();
         }
 
-        // Start automatically when page loads
         window.onload = () => {
             applyTheme(0);
             startAutoTheme();
@@ -336,4 +340,3 @@
     </script>
 </body>
 </html>
-
