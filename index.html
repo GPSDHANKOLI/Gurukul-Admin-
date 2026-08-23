@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GYRUKUL SCHOOL DHANKOLI ( ADMIN PORTAL)</title>
+    <title>GURUKUL SCHOOL DHANKOLI ( ADMIN PORTAL)</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        /* Dynamic Cyber Theme Variables */
         :root {
             --neon-primary: #00f3ff;
             --neon-secondary: #bc13fe;
@@ -27,7 +26,7 @@
             padding: 40px 20px;
             color: #fff;
             overflow-x: hidden;
-            transition: background-color 0.4s ease;
+            transition: background-color 1s ease-in-out;
         }
 
         /* Animated Futuristic Background */
@@ -38,7 +37,7 @@
             background-size: 40px 40px; z-index: -2;
             transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
             animation: gridMove 10s linear infinite;
-            transition: background 0.4s ease;
+            transition: background 1s ease-in-out;
         }
         @keyframes gridMove {
             0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
@@ -49,16 +48,36 @@
             background: radial-gradient(circle, var(--neon-secondary), transparent 60%);
             top: 10%; left: 10%; filter: blur(100px); opacity: 0.3; z-index: -1;
             animation: orbFloat 8s ease-in-out infinite alternate;
-            transition: background 0.4s ease;
+            transition: background 1s ease-in-out;
         }
         .glow-orb-2 {
             position: fixed; width: 300px; height: 300px;
             background: radial-gradient(circle, var(--neon-primary), transparent 60%);
             bottom: 10%; right: 10%; filter: blur(100px); opacity: 0.2; z-index: -1;
             animation: orbFloat 6s ease-in-out infinite alternate-reverse;
-            transition: background 0.4s ease;
+            transition: background 1s ease-in-out;
         }
         @keyframes orbFloat { 0% { transform: translate(0, 0); } 100% { transform: translate(50px, 50px); } }
+
+        /* --- Device Security OTP Overlay --- */
+        #otpOverlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0, 0, 0, 0.9); z-index: 100000; display: none;
+            align-items: center; justify-content: center; flex-direction: column;
+            backdrop-filter: blur(10px);
+        }
+        .otp-box {
+            background: var(--glass-bg); padding: 40px; border-radius: 15px;
+            border: 1px solid var(--neon-primary); text-align: center; width: 90%; max-width: 400px;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        }
+        .otp-box h2 { font-family: 'Orbitron', sans-serif; color: var(--neon-primary); margin-bottom: 10px; }
+        .otp-input {
+            width: 100%; padding: 12px; margin: 20px 0; background: rgba(0,0,0,0.5);
+            border: 1px solid var(--neon-primary); color: #fff; border-radius: 8px;
+            text-align: center; font-size: 20px; letter-spacing: 5px; font-family: 'Orbitron', sans-serif;
+        }
+        .otp-input:focus { outline: none; box-shadow: 0 0 10px var(--neon-primary); }
 
         /* Dashboard Container */
         .dashboard-container {
@@ -69,12 +88,12 @@
             border-radius: 20px; padding: 40px;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.02);
             position: relative;
-            transition: all 0.4s ease;
+            transition: all 1s ease-in-out;
+            display: none; /* Hidden until OTP verified */
         }
         .dashboard-container::before {
             content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
             width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--neon-primary), transparent);
-            transition: background 0.4s ease;
         }
 
         /* Top Bar Features */
@@ -85,15 +104,12 @@
         }
         .sys-status span {
             color: var(--neon-primary); text-shadow: 0 0 5px var(--neon-primary); animation: blink 1.5s infinite;
-            transition: color 0.4s ease, text-shadow 0.4s ease;
         }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         
-        .live-clock { color: var(--neon-primary); font-size: 15px; letter-spacing: 2px; transition: color 0.4s ease; }
+        .live-clock { color: var(--neon-primary); font-size: 15px; letter-spacing: 2px; }
         
-        .top-controls {
-            display: flex; gap: 15px; align-items: center;
-        }
+        .top-controls { display: flex; gap: 15px; align-items: center; }
 
         .cyber-btn {
             background: rgba(0,0,0,0.5); border: 1px solid var(--neon-primary); color: var(--neon-primary);
@@ -101,16 +117,17 @@
             font-size: 12px; transition: 0.3s;
         }
         .cyber-btn:hover, .cyber-btn.active { background: var(--neon-primary); color: #000; box-shadow: 0 0 10px var(--neon-primary); }
+        .cyber-btn-large { padding: 12px 25px; font-size: 16px; width: 100%; margin-top: 10px; }
 
         /* Header */
         .header { text-align: center; margin-bottom: 40px; }
-        .logo { width: 90px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--neon-primary)); animation: pulseLogo 3s infinite; transition: filter 0.4s ease; }
+        .logo { width: 90px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--neon-primary)); animation: pulseLogo 3s infinite; }
         @keyframes pulseLogo { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--neon-primary)); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--neon-primary)); } }
-        h1 { font-family: 'Orbitron', sans-serif; font-size: 30px; color: #fff; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; text-shadow: 0 0 10px var(--neon-primary); transition: text-shadow 0.4s ease; }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 30px; color: #fff; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; text-shadow: 0 0 10px var(--neon-primary); }
         .subtitle { font-size: 14px; color: #8892b0; letter-spacing: 2px; text-transform: uppercase; }
 
         /* Cards Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
         
         .cyber-card {
             position: relative; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
@@ -138,14 +155,15 @@
         }
         
         .cyber-card:hover .card-icon { 
-            background: var(--neon-primary); 
-            color: #000; 
-            box-shadow: 0 0 15px var(--neon-primary); 
-            border-color: var(--neon-primary);
+            background: var(--neon-primary); color: #000; box-shadow: 0 0 15px var(--neon-primary); border-color: var(--neon-primary);
         }
         
-        .card-info h3 { font-family: 'Orbitron', sans-serif; font-size: 15px; margin-bottom: 4px; color: #e6f1ff; }
-        .card-info p { font-size: 12px; color: #8892b0; }
+        .card-info h3 { font-family: 'Orbitron', sans-serif; font-size: 14px; margin-bottom: 4px; color: #e6f1ff; }
+        .card-info p { font-size: 11px; color: #8892b0; }
+
+        .disabled-card { opacity: 0.6; cursor: not-allowed; }
+        .disabled-card:hover { transform: none; border-color: rgba(255, 255, 255, 0.05); box-shadow: none; }
+        .disabled-card:hover .card-icon { background: rgba(255, 255, 255, 0.05); color: #fff; box-shadow: none; border-color: rgba(255, 255, 255, 0.1); }
 
         /* Footer */
         .cyber-footer {
@@ -153,7 +171,7 @@
             display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; text-align: center;
         }
         .footer-data { font-size: 12px; color: #8892b0; }
-        .footer-data span { color: var(--neon-primary); font-weight: 600; font-family: 'Orbitron', sans-serif; margin-left: 5px; transition: color 0.4s ease; }
+        .footer-data span { color: var(--neon-primary); font-weight: 600; font-family: 'Orbitron', sans-serif; margin-left: 5px; }
 
         @media (max-width: 768px) {
             .dashboard-container { padding: 30px 20px; }
@@ -169,9 +187,21 @@
     <div class="glow-orb"></div>
     <div class="glow-orb-2"></div>
 
+    <!-- OTP SECURITY OVERLAY -->
+    <div id="otpOverlay">
+        <div class="otp-box">
+            <img src="https://gsssdhankoli.github.io/Logo.png/logo.png" alt="Logo" style="width: 70px; margin-bottom: 15px;">
+            <h2>NEW DEVICE DETECTED</h2>
+            <p style="color: #8892b0; font-size: 13px;">सिक्योरिटी के लिए OTP gurukulseniorsecondaryschooldh@gmail.com पर भेजा गया है।</p>
+            <input type="text" id="otpInput" class="otp-input" placeholder="000000" maxlength="6">
+            <button class="cyber-btn cyber-btn-large" onclick="verifyDeviceOtp()">VERIFY DEVICE</button>
+            <p id="otpError" style="color: #ff003c; margin-top: 15px; display: none; font-size: 13px;">❌ गलत OTP!</p>
+        </div>
+    </div>
+
+    
     <div class="dashboard-container" id="mainDashboard">
         
-        <!-- Top Bar Features -->
         <div class="top-bar">
             <div class="sys-status">SYSTEM: <span id="autoStatus">AUTO THEME (ACTIVE)</span></div>
             <div class="live-clock" id="clock">00:00:00</div>
@@ -188,80 +218,131 @@
             <p class="subtitle">GURUKUL SR. SEC. SCHOOL DHANKOLI </p>
         </div>
 
+        <!-- BUTTONS GRID (Perfect Sequence) -->
         <div class="grid">
             
-            <a href="https://script.google.com/macros/s/AKfycbwHNfP42OCoYa08fSLpSbDmT4cFmOgJQb3g4QVJ-4clGZ6iJvVUDdMtyUOXFjAyVhg/exec" class="cyber-card">
-                <div class="card-icon">📖</div>
-                <div class="card-info">
-                    <h3>होमवर्क पोर्टल</h3>
-                    <p>होमवर्क और असाइनमेंट अपलोड करें</p>
-                </div>
-            </a>
-
+            <!-- 1. Admission -->
             <a href="https://script.google.com/macros/s/AKfycby7jC80yVGPERc3m-t6iHaz47NilElqeMaTtDBekIrc_wC3UQg94KhU2kL5gh6N90Vy/exec?page=admin" class="cyber-card">
                 <div class="card-icon">🎓</div>
                 <div class="card-info">
-                    <h3>स्कूल एडमिशन</h3>
+                    <h3>1. स्कूल एडमिशन</h3>
                     <p>एडमिशन डेटाबेस एक्सेस करें</p>
                 </div>
             </a>
 
+            <!-- 2. Scholarship Admission -->
             <a href="https://script.google.com/macros/s/AKfycbyNb8HXMppE2yN3h61hhPEYN3gBacGJjRWCLgCVMcNvry1XCtsPY1DYciWbGd_gZoJVIg/exec?page=admin&hl=en-US" class="cyber-card">
                 <div class="card-icon">📜</div>
                 <div class="card-info">
-                    <h3>स्कॉलरशिप पोर्टल</h3>
+                    <h3>2. स्कॉलरशिप एडमिशन</h3>
                     <p>छात्रवृत्ति आवेदन जांचें</p>
                 </div>
             </a>
 
+            <!-- 3. Scholarship Result -->
             <a href="https://script.google.com/macros/s/AKfycbx3aTQYSBiyskSrF_IP3ar0i_ESHkNoPbwqLNeGF7o2P-7u-pERlHYxttlhhCLpf40j/exec?page=admin" class="cyber-card">
                 <div class="card-icon">📊</div>
                 <div class="card-info">
-                    <h3> स्कॉलरशिप रिजल्ट पोर्टल</h3>
+                    <h3>3. स्कॉलरशिप रिजल्ट</h3>
                     <p>परिणाम और मार्कशीट अपडेट</p>
                 </div>
             </a>
 
-            <a href="https://script.google.com/macros/s/AKfycbxZ_CYQRWBqrw7UQMXdzDl4LUIBOIy-SmqBSOHcG631HLPv57bcBz2nvr15Vz9S3KXc/exec?page=admin" class="cyber-card">
-                <div class="card-icon">💰</div>
-                <div class="card-info">
-                    <h3>फीस पोर्टल</h3>
-                    <p>फीस मैनेजमेंट सिस्टम</p>
-                </div>
-            </a>
-
-            <a href="https://script.google.com/macros/s/AKfycbwyg4suQmtRqa7mjY_d6YDaS6s25kWkrsgmadRnPlFgdBVe26geUL9F-_c4ozixADea/exec?=admin&hl=en-US" class="cyber-card">
-                <div class="card-icon">📝</div>
-                <div class="card-info">
-                    <h3>स्कूल परीक्षा और टेस्ट डेटा</h3>
-                    <p>परीक्षा डेटाबेस कंट्रोल</p>
-                </div>
-            </a>
-
-            <!-- नया ID कार्ड जनरेटर बटन -->
+            <!-- 4. ID Card -->
             <a href="https://gpsdhankoli.github.io/I-d-card/" class="cyber-card">
                 <div class="card-icon">🪪</div>
                 <div class="card-info">
-                    <h3>स्मार्ट ID कार्ड</h3>
+                    <h3>4. स्मार्ट ID कार्ड</h3>
                     <p>छात्र ID Card जनरेट करें</p>
                 </div>
             </a>
 
-            <!-- नया एनुअल रिपोर्ट बटन -->
+            <!-- 5. Annual Report -->
             <a href="https://script.google.com/macros/s/AKfycbzvwevN3OXU4U64_4pQU9bC-rNattaSjSX0SYu6NbXJTzc5XUxdFEIHIhoGfAaMg8ANig/exec?page=admin&hl=en-US" class="cyber-card">
                 <div class="card-icon">📑</div>
                 <div class="card-info">
-                    <h3>एनुअल रिपोर्ट</h3>
+                    <h3>5. एनुअल रिपोर्ट</h3>
                     <p>वार्षिक परिणाम (Annual Report)</p>
                 </div>
             </a>
-            
-            <!-- नया हाफ ईयरली एग्जाम बटन -->
+
+            <!-- 6. Daily Test (School Exam Data) -->
+            <a href="https://share.google/oN3qzKU8uKLLtPw83?page=admin" class="cyber-card">
+                <div class="card-icon">📝</div>
+                <div class="card-info">
+                    <h3>6. डेली टेस्ट</h3>
+                    <p>परीक्षा डेटाबेस कंट्रोल</p>
+                </div>
+            </a>
+
+            <!-- 7. Half Yearly Exam -->
             <a href="https://script.google.com/macros/s/AKfycbxv6S_OHsxQG5t3EftnyClpNL_2f4pxjUeEE9RE0JV6a-S9Eitmwe3-Al9kwIGdwLzs4A/exec?=admin&hl=en-US" class="cyber-card">
                 <div class="card-icon">📄</div>
                 <div class="card-info">
-                    <h3>हाफ ईयरली एग्जाम</h3>
+                    <h3>7. हाफ ईयरली एग्जाम</h3>
                     <p>हाफ ईयरली एग्जाम कंट्रोल</p>
+                </div>
+            </a>
+
+            <!-- 8. Homework -->
+            <a href="https://script.google.com/macros/s/AKfycbwHNfP42OCoYa08fSLpSbDmT4cFmOgJQb3g4QVJ-4clGZ6iJvVUDdMtyUOXFjAyVhg/exec" class="cyber-card">
+                <div class="card-icon">📖</div>
+                <div class="card-info">
+                    <h3>8. होमवर्क पोर्टल</h3>
+                    <p>होमवर्क और असाइनमेंट अपलोड</p>
+                </div>
+            </a>
+
+            <!-- 9. Fees -->
+            <a href="https://script.google.com/macros/s/AKfycbxZ_CYQRWBqrw7UQMXdzDl4LUIBOIy-SmqBSOHcG631HLPv57bcBz2nvr15Vz9S3KXc/exec?page=admin" class="cyber-card">
+                <div class="card-icon">💰</div>
+                <div class="card-info">
+                    <h3>9. फीस पोर्टल</h3>
+                    <p>फीस मैनेजमेंट सिस्टम</p>
+                </div>
+            </a>
+
+            <!-- 10 to 15 (Future Portals - Coming Soon) -->
+            <a href="javascript:void(0)" onclick="alert('Coming Soon! (Link not added yet)')" class="cyber-card disabled-card">
+                <div class="card-icon">🔒</div>
+                <div class="card-info">
+                    <h3>10. पोर्टल 10</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon! (Link not added yet)')" class="cyber-card disabled-card">
+                <div class="card-icon">🔒</div>
+                <div class="card-info">
+                    <h3>11. पोर्टल 11</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon! (Link not added yet)')" class="cyber-card disabled-card">
+                <div class="card-icon">🔒</div>
+                <div class="card-info">
+                    <h3>12. पोर्टल 12</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon! (Link not added yet)')" class="cyber-card disabled-card">
+                <div class="card-icon">🔒</div>
+                <div class="card-info">
+                    <h3>13. पोर्टल 13</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon! (Link not added yet)')" class="cyber-card disabled-card">
+                <div class="card-icon">🔒</div>
+                <div class="card-info">
+                    <h3>14. पोर्टल 14</h3>
+                    <p>Coming Soon...</p>
+                </div>
+            </a>
+            <a href="javascript:void(0)" onclick="alert('Coming Soon! (Link not added yet)')" class="cyber-card disabled-card">
+                <div class="card-icon">🔒</div>
+                <div class="card-info">
+                    <h3>15. पोर्टल 15</h3>
+                    <p>Coming Soon...</p>
                 </div>
             </a>
 
@@ -275,6 +356,47 @@
     </div>
 
     <script>
+        // --- 1. Device Verification (OTP Logic) ---
+        let systemOtp = "";
+
+        window.onload = () => {
+            // Check if device is already verified in localStorage
+            if (!localStorage.getItem("device_verified")) {
+                document.getElementById("mainDashboard").style.display = "none";
+                document.getElementById("otpOverlay").style.display = "flex";
+                
+                // Call Google Apps Script backend to send email (if available)
+                if (typeof google !== 'undefined' && google.script && google.script.run) {
+                    google.script.run.withSuccessHandler(function(otp) {
+                        systemOtp = otp;
+                    }).sendOtpEmail(); // Make sure this function exists in your code.gs
+                } else {
+                    // Fallback for testing UI if google.script is not loaded
+                    systemOtp = "123456";
+                    console.log("Developer Mode OTP: 123456");
+                }
+            } else {
+                // Device already verified, show dashboard immediately
+                document.getElementById("mainDashboard").style.display = "block";
+                applyTheme(0);
+                startAutoTheme();
+            }
+        };
+
+        function verifyDeviceOtp() {
+            let userOtp = document.getElementById("otpInput").value;
+            if (userOtp === systemOtp && systemOtp !== "") {
+                localStorage.setItem("device_verified", "true"); // Lock device as verified
+                document.getElementById("otpOverlay").style.display = "none";
+                document.getElementById("mainDashboard").style.display = "block";
+                applyTheme(0);
+                startAutoTheme();
+            } else {
+                document.getElementById("otpError").style.display = "block";
+            }
+        }
+
+        // --- 2. Clock ---
         function updateClock() {
             const now = new Date();
             const time = now.toLocaleTimeString('en-US', { hour12: false });
@@ -292,39 +414,22 @@
             }
         }
 
+        // --- 3. Dynamic Themes (1-Second Full Background Change) ---
         const cyberThemes = [
-            { primary: '#00f3ff', secondary: '#bc13fe', bgDark: '#030a16', glassBg: 'rgba(10, 20, 40, 0.6)', grid: 'rgba(0, 243, 255, 0.08)' },
-            { primary: '#00ff41', secondary: '#008f11', bgDark: '#000000', glassBg: 'rgba(0, 20, 0, 0.7)', grid: 'rgba(0, 255, 65, 0.08)' },
-            { primary: '#ff003c', secondary: '#ff5500', bgDark: '#120000', glassBg: 'rgba(40, 0, 0, 0.7)', grid: 'rgba(255, 0, 60, 0.08)' },
-            { primary: '#f9a826', secondary: '#ff007f', bgDark: '#1a0b2e', glassBg: 'rgba(30, 10, 50, 0.7)', grid: 'rgba(249, 168, 38, 0.08)' },
-            { primary: '#eaff00', secondary: '#00ffaa', bgDark: '#0d1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(234, 255, 0, 0.08)' },
-            { primary: '#ff00ff', secondary: '#8a2be2', bgDark: '#1a001a', glassBg: 'rgba(40, 0, 40, 0.7)', grid: 'rgba(255, 0, 255, 0.08)' },
-            { primary: '#ffffff', secondary: '#00e5ff', bgDark: '#001a1a', glassBg: 'rgba(0, 40, 40, 0.6)', grid: 'rgba(255, 255, 255, 0.1)' },
-            { primary: '#ff1493', secondary: '#ffb6c1', bgDark: '#1a000d', glassBg: 'rgba(40, 0, 20, 0.7)', grid: 'rgba(255, 20, 147, 0.08)' },
-            { primary: '#00ffaa', secondary: '#008080', bgDark: '#001a13', glassBg: 'rgba(0, 40, 30, 0.7)', grid: 'rgba(0, 255, 170, 0.08)' },
-            { primary: '#ff4500', secondary: '#8b0000', bgDark: '#1a0400', glassBg: 'rgba(40, 10, 0, 0.7)', grid: 'rgba(255, 69, 0, 0.08)' },
-            { primary: '#ffd700', secondary: '#b8860b', bgDark: '#1a1800', glassBg: 'rgba(40, 35, 0, 0.7)', grid: 'rgba(255, 215, 0, 0.08)' },
-            { primary: '#00bfff', secondary: '#1e90ff', bgDark: '#000b1a', glassBg: 'rgba(0, 20, 40, 0.7)', grid: 'rgba(0, 191, 255, 0.08)' },
-            { primary: '#7fff00', secondary: '#32cd32', bgDark: '#0a1a00', glassBg: 'rgba(15, 40, 0, 0.7)', grid: 'rgba(127, 255, 0, 0.08)' },
-            { primary: '#8a2be2', secondary: '#4b0082', bgDark: '#0b001a', glassBg: 'rgba(20, 0, 40, 0.7)', grid: 'rgba(138, 43, 226, 0.08)' },
-            { primary: '#ff8c00', secondary: '#ff0000', bgDark: '#1a0a00', glassBg: 'rgba(40, 15, 0, 0.7)', grid: 'rgba(255, 140, 0, 0.08)' },
-            { primary: '#00ffff', secondary: '#0000ff', bgDark: '#00001a', glassBg: 'rgba(0, 0, 40, 0.7)', grid: 'rgba(0, 255, 255, 0.08)' },
-            { primary: '#adff2f', secondary: '#ffff00', bgDark: '#0f1a00', glassBg: 'rgba(20, 40, 0, 0.7)', grid: 'rgba(173, 255, 47, 0.08)' },
-            { primary: '#ff69b4', secondary: '#ff1493', bgDark: '#1a0011', glassBg: 'rgba(40, 0, 25, 0.7)', grid: 'rgba(255, 105, 180, 0.08)' },
-            { primary: '#c0c0c0', secondary: '#808080', bgDark: '#111111', glassBg: 'rgba(40, 40, 40, 0.7)', grid: 'rgba(192, 192, 192, 0.08)' },
-            { primary: '#ff00aa', secondary: '#5500ff', bgDark: '#11001a', glassBg: 'rgba(30, 0, 40, 0.7)', grid: 'rgba(255, 0, 170, 0.08)' }
-        ];
-        
-        // नए बैकग्राउंड कलर्स (1 सेकंड वाले टाइमर के लिए)
-        const customBgColors = [
-            '#0a0000', '#000a00', '#00000a', '#0a0a00', 
-            '#0a000a', '#000a0a', '#080808', '#0f0500', '#00050f'
+            { primary: '#00f3ff', secondary: '#bc13fe', bgDark: '#01050d', glassBg: 'rgba(1, 5, 13, 0.7)', grid: 'rgba(0, 243, 255, 0.15)' },
+            { primary: '#00ff41', secondary: '#008f11', bgDark: '#000800', glassBg: 'rgba(0, 8, 0, 0.7)', grid: 'rgba(0, 255, 65, 0.15)' },
+            { primary: '#ff003c', secondary: '#ff5500', bgDark: '#0a0000', glassBg: 'rgba(10, 0, 0, 0.7)', grid: 'rgba(255, 0, 60, 0.15)' },
+            { primary: '#f9a826', secondary: '#ff007f', bgDark: '#0a0314', glassBg: 'rgba(10, 3, 20, 0.7)', grid: 'rgba(249, 168, 38, 0.15)' },
+            { primary: '#eaff00', secondary: '#00ffaa', bgDark: '#070a00', glassBg: 'rgba(7, 10, 0, 0.7)', grid: 'rgba(234, 255, 0, 0.15)' },
+            { primary: '#ff00ff', secondary: '#8a2be2', bgDark: '#0a000a', glassBg: 'rgba(10, 0, 10, 0.7)', grid: 'rgba(255, 0, 255, 0.15)' },
+            { primary: '#ffffff', secondary: '#00e5ff', bgDark: '#000a0a', glassBg: 'rgba(0, 10, 10, 0.7)', grid: 'rgba(255, 255, 255, 0.2)' },
+            { primary: '#ff1493', secondary: '#ffb6c1', bgDark: '#0a0005', glassBg: 'rgba(10, 0, 5, 0.7)', grid: 'rgba(255, 20, 147, 0.15)' },
+            { primary: '#00ffaa', secondary: '#008080', bgDark: '#000a07', glassBg: 'rgba(0, 10, 7, 0.7)', grid: 'rgba(0, 255, 170, 0.15)' },
+            { primary: '#ff4500', secondary: '#8b0000', bgDark: '#0a0200', glassBg: 'rgba(10, 2, 0, 0.7)', grid: 'rgba(255, 69, 0, 0.15)' }
         ];
 
         let themeIndex = 0;
-        let bgIndex = 0;
         let autoThemeInterval;
-        let bgInterval;
         let isAutoOn = true;
 
         function applyTheme(index) {
@@ -337,17 +442,11 @@
         }
 
         function startAutoTheme() {
-            // ओरिजिनल 500ms वाला कलर इफ़ेक्ट (बिल्कुल पहले जैसा)
+            // 1000ms (1 second) interval changes the entire theme palette including background
             autoThemeInterval = setInterval(() => {
                 themeIndex = (themeIndex + 1) % cyberThemes.length;
                 applyTheme(themeIndex);
-            }, 500); 
-            
-            // नया 1-सेकंड वाला बैकग्राउंड कलर इफ़ेक्ट
-            bgInterval = setInterval(() => {
-                bgIndex = (bgIndex + 1) % customBgColors.length;
-                document.body.style.backgroundColor = customBgColors[bgIndex];
-            }, 1000);
+            }, 1000); 
             
             document.getElementById('autoStatus').innerText = "AUTO THEME (ACTIVE)";
             document.getElementById('toggleAutoBtn').innerText = "[ STOP AUTO ]";
@@ -356,10 +455,6 @@
 
         function stopAutoTheme() {
             clearInterval(autoThemeInterval);
-            clearInterval(bgInterval); // बैकग्राउंड का टाइमर भी रोक देगा
-            
-            document.body.style.backgroundColor = 'var(--bg-dark)'; // बैकग्राउंड वापस पहले जैसा सेट करने के लिए
-            
             document.getElementById('autoStatus').innerText = "MANUAL MODE (PAUSED)";
             document.getElementById('toggleAutoBtn').innerText = "[ START AUTO ]";
             document.getElementById('toggleAutoBtn').classList.remove('active');
@@ -370,11 +465,6 @@
             if (isAutoOn) startAutoTheme();
             else stopAutoTheme();
         }
-
-        window.onload = () => {
-            applyTheme(0);
-            startAutoTheme();
-        };
     </script>
 </body>
 </html>
