@@ -199,7 +199,6 @@
         </div>
     </div>
 
-    
     <div class="dashboard-container" id="mainDashboard">
         
         <div class="top-bar">
@@ -248,7 +247,7 @@
                 </div>
             </a>
 
-            <!-- 4. ID Card -->
+             <!-- 4. ID Card -->
             <a href="https://gpsdhankoli.github.io/I-d-card/" class="cyber-card">
                 <div class="card-icon">🪪</div>
                 <div class="card-info">
@@ -267,7 +266,7 @@
             </a>
 
             <!-- 6. Daily Test (School Exam Data) -->
-            <a href="https://script.google.com/macros/s/AKfycbwyg4suQmtRqa7mjY_d6YDaS6s25kWkrsgmadRnPlFgdBVe26geUL9F-_c4ozixADea/exec?page=admin&hl=en-US" class="cyber-card">
+            <a href="https://script.google.com/macros/s/AKfycbwyg4suQmtRqa7mjY_d6YDaS6s25kWkrsgmadRnPlFgdBVe26geUL9F-_c4ozixADea/exec?page=admin" class="cyber-card">
                 <div class="card-icon">📝</div>
                 <div class="card-info">
                     <h3>6. डेली टेस्ट</h3>
@@ -356,7 +355,7 @@
     </div>
 
     <script>
-        // --- 1. Device Verification (OTP Logic) ---
+        // --- 1. Device Verification (OTP Logic via External Backend API) ---
         let systemOtp = "";
 
         window.onload = () => {
@@ -365,16 +364,21 @@
                 document.getElementById("mainDashboard").style.display = "none";
                 document.getElementById("otpOverlay").style.display = "flex";
                 
-                // Call Google Apps Script backend to send email (if available)
-                if (typeof google !== 'undefined' && google.script && google.script.run) {
-                    google.script.run.withSuccessHandler(function(otp) {
-                        systemOtp = otp;
-                    }).sendOtpEmail(); // Make sure this function exists in your code.gs
-                } else {
-                    // Fallback for testing UI if google.script is not loaded
-                    systemOtp = "123456";
-                    console.log("Developer Mode OTP: 123456");
-                }
+                // Generate a random 6-digit OTP locally
+                systemOtp = Math.floor(100000 + Math.random() * 900000).toString();
+                
+                // Send the generated OTP via the external backend link using fetch API
+                // Assuming your backend reads the 'otp' parameter to send the email
+                const backendUrl = "https://script.google.com/macros/s/AKfycbz6RycF0JjpC0c9aQek0PINN2wLxLSblagnhd04B7pwr47oi0silPE2Di_A_vjoFRD8dA/exec?otp=" + systemOtp;
+                
+                fetch(backendUrl, { mode: 'no-cors' })
+                .then(() => {
+                    console.log("OTP Request Sent to Backend API.");
+                })
+                .catch(err => {
+                    console.log("OTP Network Error: ", err);
+                });
+                
             } else {
                 // Device already verified, show dashboard immediately
                 document.getElementById("mainDashboard").style.display = "block";
@@ -386,7 +390,7 @@
         function verifyDeviceOtp() {
             let userOtp = document.getElementById("otpInput").value;
             if (userOtp === systemOtp && systemOtp !== "") {
-                localStorage.setItem("device_verified", "true"); // Lock device as verified
+                localStorage.setItem("device_verified", "true"); // Lock device as verified forever
                 document.getElementById("otpOverlay").style.display = "none";
                 document.getElementById("mainDashboard").style.display = "block";
                 applyTheme(0);
