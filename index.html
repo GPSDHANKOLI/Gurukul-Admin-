@@ -255,6 +255,15 @@
                     <p>वार्षिक परिणाम (Annual Report)</p>
                 </div>
             </a>
+            
+            <!-- नया हाफ ईयरली एग्जाम बटन -->
+            <a href="https://script.google.com/macros/s/AKfycbxv6S_OHsxQG5t3EftnyClpNL_2f4pxjUeEE9RE0JV6a-S9Eitmwe3-Al9kwIGdwLzs4A/exec?=admin&hl=en-US" class="cyber-card">
+                <div class="card-icon">📄</div>
+                <div class="card-info">
+                    <h3>हाफ ईयरली एग्जाम</h3>
+                    <p>हाफ ईयरली एग्जाम कंट्रोल</p>
+                </div>
+            </a>
 
         </div>
 
@@ -305,9 +314,17 @@
             { primary: '#c0c0c0', secondary: '#808080', bgDark: '#111111', glassBg: 'rgba(40, 40, 40, 0.7)', grid: 'rgba(192, 192, 192, 0.08)' },
             { primary: '#ff00aa', secondary: '#5500ff', bgDark: '#11001a', glassBg: 'rgba(30, 0, 40, 0.7)', grid: 'rgba(255, 0, 170, 0.08)' }
         ];
+        
+        // नए बैकग्राउंड कलर्स (1 सेकंड वाले टाइमर के लिए)
+        const customBgColors = [
+            '#0a0000', '#000a00', '#00000a', '#0a0a00', 
+            '#0a000a', '#000a0a', '#080808', '#0f0500', '#00050f'
+        ];
 
         let themeIndex = 0;
+        let bgIndex = 0;
         let autoThemeInterval;
+        let bgInterval;
         let isAutoOn = true;
 
         function applyTheme(index) {
@@ -320,10 +337,18 @@
         }
 
         function startAutoTheme() {
+            // ओरिजिनल 500ms वाला कलर इफ़ेक्ट (बिल्कुल पहले जैसा)
             autoThemeInterval = setInterval(() => {
                 themeIndex = (themeIndex + 1) % cyberThemes.length;
                 applyTheme(themeIndex);
             }, 500); 
+            
+            // नया 1-सेकंड वाला बैकग्राउंड कलर इफ़ेक्ट
+            bgInterval = setInterval(() => {
+                bgIndex = (bgIndex + 1) % customBgColors.length;
+                document.body.style.backgroundColor = customBgColors[bgIndex];
+            }, 1000);
+            
             document.getElementById('autoStatus').innerText = "AUTO THEME (ACTIVE)";
             document.getElementById('toggleAutoBtn').innerText = "[ STOP AUTO ]";
             document.getElementById('toggleAutoBtn').classList.add('active');
@@ -331,6 +356,10 @@
 
         function stopAutoTheme() {
             clearInterval(autoThemeInterval);
+            clearInterval(bgInterval); // बैकग्राउंड का टाइमर भी रोक देगा
+            
+            document.body.style.backgroundColor = 'var(--bg-dark)'; // बैकग्राउंड वापस पहले जैसा सेट करने के लिए
+            
             document.getElementById('autoStatus').innerText = "MANUAL MODE (PAUSED)";
             document.getElementById('toggleAutoBtn').innerText = "[ START AUTO ]";
             document.getElementById('toggleAutoBtn').classList.remove('active');
