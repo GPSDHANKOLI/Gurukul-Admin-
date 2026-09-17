@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gurukul Admin Portal</title>
     
+    <!-- PWA Manifest & App Icons -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e1b4b">
+    <link rel="apple-touch-icon" href="https://gsssdhankoli.github.io/Logo.png/logo.png">
+    
     <!-- Modern Fonts & Highly Reliable Icons (Material Symbols) -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,600,1,0" rel="stylesheet" />
@@ -32,7 +37,7 @@
             width: 100%; max-width: 480px; min-height: 100vh;
             background-color: var(--bg-color);
             position: relative; overflow-x: hidden;
-            display: none; /* Hidden till OTP */
+            display: none; 
             flex-direction: column;
             box-shadow: 0 0 40px rgba(0,0,0,0.1);
         }
@@ -62,6 +67,15 @@
         }
         .lang-btn:active { transform: scale(0.95); }
         .clock { font-size: 11px; font-weight: 600; background: rgba(0,0,0,0.2); padding: 6px 10px; border-radius: 12px; }
+
+        /* Install App Button */
+        .install-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: none; color: white; border-radius: 20px; padding: 6px 12px; font-size: 12px;
+            font-weight: 700; cursor: pointer; display: none; align-items: center; gap: 5px;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); transition: 0.2s;
+        }
+        .install-btn:active { transform: scale(0.95); }
 
         /* --- Master Control Button (Floating Style) --- */
         .master-control-wrapper { margin-top: -25px; padding: 0 20px; position: relative; z-index: 10; margin-bottom: 25px; }
@@ -101,7 +115,6 @@
         }
         .icon-box span { font-size: 22px; }
         
-        /* Modern Gradients for Icons */
         .c-fees { background: #dcfce7; color: #166534; }
         .c-admin { background: #e0e7ff; color: #3730a3; }
         .c-schol { background: #f3e8ff; color: #6b21a8; }
@@ -205,6 +218,10 @@
                     </div>
                 </div>
                 <div class="controls">
+                    <!-- New App Install Button -->
+                    <button class="install-btn" id="installAppBtn">
+                        <span class="material-symbols-rounded" style="font-size:16px;">download</span> App
+                    </button>
                     <!-- Language Toggle Button -->
                     <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">अ / A</button>
                     <div class="clock" id="clock">00:00</div>
@@ -295,7 +312,6 @@
                     <p data-en="Print Exam Papers" data-hi="एग्जाम पेपर प्रिंट करें">Print Exam Papers</p>
                 </a>
 
-                <!-- NEW: Live Helpdesk Card -->
                 <div class="card" onclick="openAdminHelpdesk()" style="cursor: pointer;">
                     <div class="icon-box c-helpdesk"><span class="material-symbols-rounded">support_agent</span></div>
                     <h3 data-en="Live Helpdesk" data-hi="लाइव हेल्पडेस्क">Live Helpdesk</h3>
@@ -322,9 +338,7 @@
             <h2 data-en="Live Helpdesk Control" data-hi="लाइव हेल्पडेस्क कंट्रोल">Live Helpdesk Control</h2>
         </div>
         
-        <div id="hd-student-list" class="hd-student-list">
-            <!-- List of active chats will load here -->
-        </div>
+        <div id="hd-student-list" class="hd-student-list"></div>
 
         <div id="hd-chat-view" class="hd-chat-view">
             <div class="hd-chat-header">
@@ -345,7 +359,6 @@
 
     <script>
         // --- 1. Language Toggle Logic ---
-        // Default language is English.
         let currentLang = localStorage.getItem("admin_lang") || 'en';
         
         function updateLanguageUI() {
@@ -365,7 +378,7 @@
         let systemOtp = "";
 
         window.onload = () => {
-            updateLanguageUI(); // Set language on load
+            updateLanguageUI(); 
 
             if (!localStorage.getItem("admin_device_verified")) {
                 document.getElementById("mainDashboard").style.display = "none";
@@ -455,7 +468,6 @@
                         
                         Object.keys(allChats[stuId]).forEach(msgKey => {
                             const msg = allChats[stuId][msgKey];
-                            // 24 Hour Auto-Delete Logic
                             if (now - msg.timestamp > oneDay) {
                                 hdDb.ref(`chats/${stuId}/${msgKey}`).remove(); 
                             } else {
@@ -522,13 +534,48 @@
             input.value = '';
         }
 
-        // Add 'Enter' key support for sending messages
         document.getElementById('hd-admin-input').addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
                 sendAdminMessage();
             }
         });
+
+        // --- 5. PWA Install Logic (App Download) ---
+        let deferredPrompt;
+        const installBtn = document.getElementById('installAppBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // गूगल क्रोम के डिफ़ॉल्ट प्रॉम्प्ट को रोकें
+            e.preventDefault();
+            // इवेंट को सेव करें ताकि बाद में ट्रिगर किया जा सके
+            deferredPrompt = e;
+            // अपना "Install App" बटन दिखाएं
+            installBtn.style.display = 'flex'; 
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                // इंस्टॉल प्रॉम्प्ट दिखाएं
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                if (outcome === 'accepted') {
+                    console.log('Admin App installed');
+                }
+                // प्रॉम्प्ट का काम हो गया, इसे क्लियर करें और बटन छुपा दें
+                deferredPrompt = null;
+                installBtn.style.display = 'none';
+            }
+        });
+
+        // सर्विस वर्कर (Service Worker) रजिस्टर करना
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker Registered'))
+                .catch(err => console.log('Service Worker Error: ', err));
+            });
+        }
     </script>
 </body>
 </html>
