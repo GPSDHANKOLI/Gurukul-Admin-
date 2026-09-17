@@ -1,0 +1,22 @@
+{
+  "name": "Gurukul Admin Portal",
+  "short_name": "Admin",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#e2e8f0",
+  "theme_color": "#1e1b4b",
+  "description": "Gurukul Senior Secondary School Admin Control Panel",
+  "icons": [
+    {
+      "src": "https://gsssdhankoli.github.io/Logo.png/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://gsssdhankoli.github.io/Logo.png/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
