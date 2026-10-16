@@ -243,6 +243,208 @@
         </div>
 
         <div class="content">
+            <!-- GURUKUL ADMIT CARD ANIMATED ADMIN BUTTON (DESIGN 1) -->
+<style>
+  .gsss-ac-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+    width: 100%;
+  }
+
+  .gsss-ac-card-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 420px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    text-decoration: none !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #172554 100%);
+    border: 2px solid #facc15;
+    box-shadow:
+      0 8px 24px rgba(30, 58, 138, 0.45),
+      0 0 15px rgba(250, 204, 21, 0.35),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* बटन दबाने पर 3D Press इफेक्ट */
+  .gsss-ac-card-btn:active {
+    transform: scale(0.96);
+  }
+
+  .gsss-ac-card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 28px rgba(30, 58, 138, 0.6),
+      0 0 22px rgba(250, 204, 21, 0.65);
+  }
+
+  /* बटन के ऊपर चलने वाली चमकदार शाइन वेव */
+  .gsss-ac-card-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.28),
+      transparent
+    );
+    transform: skewX(-25deg);
+    animation: gsssAcShine 2.8s infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gsssAcShine {
+    0%   { left: -120%; }
+    65%  { left: 140%; }
+    100% { left: 140%; }
+  }
+
+  .gsss-ac-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    z-index: 2;
+  }
+
+  /* स्कूल लोगो + गोल्डन ग्लो रिंग */
+  .gsss-ac-logo-box {
+    position: relative;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 3px;
+    border: 2.5px solid #fde047;
+    box-shadow: 0 0 14px rgba(250, 204, 21, 0.7);
+    flex-shrink: 0;
+    animation: gsssLogoPulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes gsssLogoPulse {
+    0%   { transform: scale(1); box-shadow: 0 0 10px rgba(250, 204, 21, 0.5); }
+    100% { transform: scale(1.06); box-shadow: 0 0 20px rgba(250, 204, 21, 0.95); }
+  }
+
+  .gsss-ac-logo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .gsss-ac-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .gsss-ac-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .gsss-ac-live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid #4ade80;
+    color: #4ade80;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 1px 7px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .gsss-ac-dot {
+    width: 6px;
+    height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #22c55e;
+    animation: gsssBlink 1s infinite alternate;
+  }
+
+  @keyframes gsssBlink {
+    0%   { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .gsss-ac-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .gsss-ac-subtitle {
+    color: #fde047;
+    font-size: 11.5px;
+    font-weight: 600;
+  }
+
+  /* दाईं तरफ का एनिमेटेड एरो बटन */
+  .gsss-ac-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(250, 204, 21, 0.45);
+    flex-shrink: 0;
+    z-index: 2;
+    animation: gsssArrowBounce 1.2s infinite ease-in-out;
+  }
+
+  @keyframes gsssArrowBounce {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(4px); }
+  }
+</style>
+
+<div class="gsss-ac-wrap">
+  <a href="https://gsssdhankoli.github.io/Admit-Card-/" class="gsss-ac-card-btn">
+    <div class="gsss-ac-left">
+      <div class="gsss-ac-logo-box">
+        <img src="https://gsssdhankoli.github.io/Logo.png/logo.png" alt="GSSS Logo" />
+      </div>
+      <div class="gsss-ac-info">
+        <div class="gsss-ac-badge-row">
+          <span class="gsss-ac-live-pill">
+            <span class="gsss-ac-dot"></span> PORTAL LIVE
+          </span>
+        </div>
+        <div class="gsss-ac-title">ADMIT CARD PORTAL</div>
+        <div class="gsss-ac-subtitle">प्रवेश-पत्र जनरेट एवं प्रिंट करें</div>
+      </div>
+    </div>
+    <div class="gsss-ac-arrow">➔</div>
+  </a>
+</div>
+            
 
             <!-- 🔥 NEW SMART CAMPUS PORTALS (ADMIN) 🔥 -->
             <div class="section-heading" data-en="Smart Campus Portals" data-hi="स्मार्ट कैंपस पोर्टल्स">Smart Campus Portals</div>
