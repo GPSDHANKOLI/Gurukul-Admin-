@@ -834,6 +834,39 @@
                 .catch(err => console.log('Service Worker Error: ', err));
             });
         }
+  <!-- ====== START: DIWALI SPECIAL SCHOOL POP-UP ====== -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+  #schoolDiwaliOverlay { position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.82); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:16px; font-family:sans-serif; }
+  .sd-card { position:relative; max-width:540px; width:100%; border-radius:24px; padding:32px 24px; text-align:center; color:#fff; background:radial-gradient(circle at 50% 25%, #6e0f33 0%, #38061c 55%, #16041a 100%); border:2px solid rgba(255,215,0,0.55); box-shadow:0 0 60px rgba(255,183,3,0.4); animation:sdPop 0.6s ease forwards; overflow:hidden; }
+  @keyframes sdPop { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+  .sd-title { font-family:'Cinzel Decorative',serif; font-size:clamp(26px,5vw,42px); font-weight:900; margin:4px 0; background:linear-gradient(90deg,#BF953F,#FCF6BA,#B38728,#FBF5B7); -webkit-background-clip:text; color:transparent; }
+  .sd-script { font-family:'Great Vibes',cursive; font-size:28px; color:#FDE047; margin:0; }
+  .sd-msg { font-family:'Playfair Display',serif; font-size:15px; line-height:1.6; color:#FEF3C7; margin:14px auto; max-width:440px; }
+  .sd-badge { display:inline-block; padding:6px 14px; border-radius:99px; background:rgba(245,158,11,0.2); border:1px solid rgba(255,215,0,0.4); color:#FDE047; font-size:13px; margin-bottom:10px; }
+  .sd-btn { margin-top:18px; padding:12px 28px; border-radius:99px; border:none; background:linear-gradient(135deg,#FFD700,#D97706); color:#111; font-weight:bold; font-size:15px; cursor:pointer; box-shadow:0 6px 20px rgba(245,158,11,0.5); }
+  .sd-flame { transform-origin:bottom center; animation:sdFlicker 1.2s infinite alternate; }
+  @keyframes sdFlicker { 0% { transform:scale(1) rotate(-2deg); } 100% { transform:scale(0.95,1.08) rotate(2deg); } }
+</style>
+
+<div id="schoolDiwaliOverlay">
+  <div class="sd-card">
+    <div class="sd-badge">🏫 GURUKUL SENIOR SECONDARY SCHOOL DHANKOLI </div>
+    <p class="sd-script">Wishing You a Joyous & Bright</p>
+    <h1 class="sd-title">SHUBH DEEPAWALI</h1>
+    <p class="sd-msg">May the divine light of Deepavali illuminate your life with wisdom, joy, health, and endless success. Wishing all students, parents & teachers a blessed & safe Diwali!</p>
+    <div class="sd-badge" style="background:rgba(0,0,0,0.35);">✨ Diwali Break:  ✨</div>
+    <div style="display:flex;justify-content:center;gap:24px;margin:16px 0;">
+      <svg width="70" height="70" viewBox="0 0 100 100">
+        <path class="sd-flame" d="M50 10 C64 30 66 45 50 54 C34 45 36 30 50 10 Z" fill="#F59E0B"/>
+        <path class="sd-flame" d="M50 22 C57 35 58 45 50 52 C42 45 43 35 50 22 Z" fill="#FFF"/>
+        <path d="M12 54 Q50 66 88 54 Q80 86 50 86 Q20 86 12 54 Z" fill="#92400E" stroke="#FFD700" stroke-width="2.5"/>
+      </svg>
+    </div>
+    <button class="sd-btn" onclick="document.getElementById('schoolDiwaliOverlay').remove()">✨ Continue to School Website →</button>
+  </div>
+</div>
+<!-- ====== END: DIWALI SPECIAL SCHOOL POP-UP ====== -->
     </script>
 </body>
 </html>
