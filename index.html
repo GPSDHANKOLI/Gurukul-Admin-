@@ -244,207 +244,202 @@
 
         <div class="content">
             <!-- GURUKUL ADMIT CARD ANIMATED ADMIN BUTTON (DESIGN 1) -->
-<style>
-  .gsss-ac-wrap {
-    display: flex;
-    justify-content: center;
-    margin: 12px 0;
-    width: 100%;
-  }
+            <style>
+              .gsss-ac-wrap {
+                display: flex;
+                justify-content: center;
+                margin: 12px 0;
+                width: 100%;
+              }
 
-  .gsss-ac-card-btn {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 420px;
-    padding: 14px 18px;
-    border-radius: 16px;
-    text-decoration: none !important;
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #172554 100%);
-    border: 2px solid #facc15;
-    box-shadow:
-      0 8px 24px rgba(30, 58, 138, 0.45),
-      0 0 15px rgba(250, 204, 21, 0.35),
-      inset 0 1px 1px rgba(255, 255, 255, 0.25);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    -webkit-tap-highlight-color: transparent;
-    font-family: 'Poppins', sans-serif;
-  }
+              .gsss-ac-card-btn {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 420px;
+                padding: 14px 18px;
+                border-radius: 16px;
+                text-decoration: none !important;
+                background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #172554 100%);
+                border: 2px solid #facc15;
+                box-shadow:
+                  0 8px 24px rgba(30, 58, 138, 0.45),
+                  0 0 15px rgba(250, 204, 21, 0.35),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.25);
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.18s ease, box-shadow 0.18s ease;
+                -webkit-tap-highlight-color: transparent;
+                font-family: 'Poppins', sans-serif;
+              }
 
-  /* बटन दबाने पर 3D Press इफेक्ट */
-  .gsss-ac-card-btn:active {
-    transform: scale(0.96);
-  }
+              .gsss-ac-card-btn:active {
+                transform: scale(0.96);
+              }
 
-  .gsss-ac-card-btn:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      0 12px 28px rgba(30, 58, 138, 0.6),
-      0 0 22px rgba(250, 204, 21, 0.65);
-  }
+              .gsss-ac-card-btn:hover {
+                transform: translateY(-2px);
+                box-shadow:
+                  0 12px 28px rgba(30, 58, 138, 0.6),
+                  0 0 22px rgba(250, 204, 21, 0.65);
+              }
 
-  /* बटन के ऊपर चलने वाली चमकदार शाइन वेव */
-  .gsss-ac-card-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 65%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.28),
-      transparent
-    );
-    transform: skewX(-25deg);
-    animation: gsssAcShine 2.8s infinite;
-    pointer-events: none;
-  }
+              .gsss-ac-card-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -120%;
+                width: 65%;
+                height: 100%;
+                background: linear-gradient(
+                  90deg,
+                  transparent,
+                  rgba(255, 255, 255, 0.28),
+                  transparent
+                );
+                transform: skewX(-25deg);
+                animation: gsssAcShine 2.8s infinite;
+                pointer-events: none;
+              }
 
-  @keyframes gsssAcShine {
-    0%   { left: -120%; }
-    65%  { left: 140%; }
-    100% { left: 140%; }
-  }
+              @keyframes gsssAcShine {
+                0%   { left: -120%; }
+                65%  { left: 140%; }
+                100% { left: 140%; }
+              }
 
-  .gsss-ac-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    z-index: 2;
-  }
+              .gsss-ac-left {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                z-index: 2;
+              }
 
-  /* स्कूल लोगो + गोल्डन ग्लो रिंग */
-  .gsss-ac-logo-box {
-    position: relative;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background: #ffffff;
-    padding: 3px;
-    border: 2.5px solid #fde047;
-    box-shadow: 0 0 14px rgba(250, 204, 21, 0.7);
-    flex-shrink: 0;
-    animation: gsssLogoPulse 2s ease-in-out infinite alternate;
-  }
+              .gsss-ac-logo-box {
+                position: relative;
+                width: 54px;
+                height: 54px;
+                border-radius: 50%;
+                background: #ffffff;
+                padding: 3px;
+                border: 2.5px solid #fde047;
+                box-shadow: 0 0 14px rgba(250, 204, 21, 0.7);
+                flex-shrink: 0;
+                animation: gsssLogoPulse 2s ease-in-out infinite alternate;
+              }
 
-  @keyframes gsssLogoPulse {
-    0%   { transform: scale(1); box-shadow: 0 0 10px rgba(250, 204, 21, 0.5); }
-    100% { transform: scale(1.06); box-shadow: 0 0 20px rgba(250, 204, 21, 0.95); }
-  }
+              @keyframes gsssLogoPulse {
+                0%   { transform: scale(1); box-shadow: 0 0 10px rgba(250, 204, 21, 0.5); }
+                100% { transform: scale(1.06); box-shadow: 0 0 20px rgba(250, 204, 21, 0.95); }
+              }
 
-  .gsss-ac-logo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-  }
+              .gsss-ac-logo-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 50%;
+              }
 
-  .gsss-ac-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+              .gsss-ac-info {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+              }
 
-  .gsss-ac-badge-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+              .gsss-ac-badge-row {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+              }
 
-  .gsss-ac-live-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(34, 197, 94, 0.2);
-    border: 1px solid #4ade80;
-    color: #4ade80;
-    font-size: 10px;
-    font-weight: 800;
-    padding: 1px 7px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+              .gsss-ac-live-pill {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                background: rgba(34, 197, 94, 0.2);
+                border: 1px solid #4ade80;
+                color: #4ade80;
+                font-size: 10px;
+                font-weight: 800;
+                padding: 1px 7px;
+                border-radius: 20px;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+              }
 
-  .gsss-ac-dot {
-    width: 6px;
-    height: 6px;
-    background: #22c55e;
-    border-radius: 50%;
-    box-shadow: 0 0 6px #22c55e;
-    animation: gsssBlink 1s infinite alternate;
-  }
+              .gsss-ac-dot {
+                width: 6px;
+                height: 6px;
+                background: #22c55e;
+                border-radius: 50%;
+                box-shadow: 0 0 6px #22c55e;
+                animation: gsssBlink 1s infinite alternate;
+              }
 
-  @keyframes gsssBlink {
-    0%   { opacity: 0.3; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1.2); }
-  }
+              @keyframes gsssBlink {
+                0%   { opacity: 0.3; transform: scale(0.8); }
+                100% { opacity: 1; transform: scale(1.2); }
+              }
 
-  .gsss-ac-title {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-    line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  }
+              .gsss-ac-title {
+                color: #ffffff;
+                font-size: 16px;
+                font-weight: 800;
+                letter-spacing: 0.4px;
+                line-height: 1.2;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+              }
 
-  .gsss-ac-subtitle {
-    color: #fde047;
-    font-size: 11.5px;
-    font-weight: 600;
-  }
+              .gsss-ac-subtitle {
+                color: #fde047;
+                font-size: 11.5px;
+                font-weight: 600;
+              }
 
-  /* दाईं तरफ का एनिमेटेड एरो बटन */
-  .gsss-ac-arrow {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
-    color: #0f172a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 900;
-    box-shadow: 0 4px 12px rgba(250, 204, 21, 0.45);
-    flex-shrink: 0;
-    z-index: 2;
-    animation: gsssArrowBounce 1.2s infinite ease-in-out;
-  }
+              .gsss-ac-arrow {
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+                color: #0f172a;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-weight: 900;
+                box-shadow: 0 4px 12px rgba(250, 204, 21, 0.45);
+                flex-shrink: 0;
+                z-index: 2;
+                animation: gsssArrowBounce 1.2s infinite ease-in-out;
+              }
 
-  @keyframes gsssArrowBounce {
-    0%, 100% { transform: translateX(0); }
-    50%      { transform: translateX(4px); }
-  }
-</style>
+              @keyframes gsssArrowBounce {
+                0%, 100% { transform: translateX(0); }
+                50%      { transform: translateX(4px); }
+              }
+            </style>
 
-<div class="gsss-ac-wrap">
-  <a href="https://gsssdhankoli.github.io/Admit-Card-/" class="gsss-ac-card-btn">
-    <div class="gsss-ac-left">
-      <div class="gsss-ac-logo-box">
-        <img src="https://gsssdhankoli.github.io/Logo.png/logo.png" alt="GSSS Logo" />
-      </div>
-      <div class="gsss-ac-info">
-        <div class="gsss-ac-badge-row">
-          <span class="gsss-ac-live-pill">
-            <span class="gsss-ac-dot"></span> PORTAL LIVE
-          </span>
-        </div>
-        <div class="gsss-ac-title">ADMIT CARD PORTAL</div>
-        <div class="gsss-ac-subtitle">प्रवेश-पत्र जनरेट एवं प्रिंट करें</div>
-      </div>
-    </div>
-    <div class="gsss-ac-arrow">➔</div>
-  </a>
-</div>
-            
+            <div class="gsss-ac-wrap">
+              <a href="https://gsssdhankoli.github.io/Admit-Card-/" class="gsss-ac-card-btn">
+                <div class="gsss-ac-left">
+                  <div class="gsss-ac-logo-box">
+                    <img src="https://gsssdhankoli.github.io/Logo.png/logo.png" alt="GSSS Logo" />
+                  </div>
+                  <div class="gsss-ac-info">
+                    <div class="gsss-ac-badge-row">
+                      <span class="gsss-ac-live-pill">
+                        <span class="gsss-ac-dot"></span> PORTAL LIVE
+                      </span>
+                    </div>
+                    <div class="gsss-ac-title">ADMIT CARD PORTAL</div>
+                    <div class="gsss-ac-subtitle">प्रवेश-पत्र जनरेट एवं प्रिंट करें</div>
+                  </div>
+                </div>
+                <div class="gsss-ac-arrow">➔</div>
+              </a>
+            </div>
 
             <!-- 🔥 NEW SMART CAMPUS PORTALS (ADMIN) 🔥 -->
             <div class="section-heading" data-en="Smart Campus Portals" data-hi="स्मार्ट कैंपस पोर्टल्स">Smart Campus Portals</div>
@@ -462,12 +457,11 @@
                 </a>
 
                 <a href="https://piyushroyal2545-prog.github.io/Privious-years-/paper-admin" class="card" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%); border:none; color:white; grid-column: span 2;">
-                    <div class="icon-box" style="background: rgba(255,255,255,0.2); color:white;"><span class="material-symbols-rounded">assignment </span></div>
-                    <h3 style="color:white;" data-en=" PYQ PAPER" data-hi="Paper">PYQ</h3>
-                    <p style="color:rgba(255,255,255,0.9);" data-en="Master radar for  PAPER" data-hi="सभी गत वर्षों के क्वेश्चन पेपर ">Master radar for PYQ PAPER</p>
+                    <div class="icon-box" style="background: rgba(255,255,255,0.2); color:white;"><span class="material-symbols-rounded">assignment</span></div>
+                    <h3 style="color:white;" data-en="PYQ PAPER" data-hi="Paper">PYQ</h3>
+                    <p style="color:rgba(255,255,255,0.9);" data-en="Master radar for PAPER" data-hi="सभी गत वर्षों के क्वेश्चन पेपर">Master radar for PYQ PAPER</p>
                 </a>
             </div>
-            <!-- 🔥 END NEW SMART CAMPUS PORTALS 🔥 -->
             
             <div class="section-heading" data-en="Management Portals" data-hi="मैनेजमेंट पोर्टल्स">Management Portals</div>
             <div class="grid">
@@ -477,20 +471,17 @@
                     <p data-en="Manage student fees" data-hi="फीस मैनेजमेंट और रसीद">Manage student fees</p>
                 </a>
                 <a href="https://gpsdhankoli.github.io/Sms/" target="_blank" style="text-decoration: none; display: block; max-width: 400px;">
-  <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 18px 20px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-left: 4px solid #25D366; cursor: pointer;">
-    <div style="display: flex; align-items: center; gap: 16px;">
-      <div style="width: 48px; height: 48px; background: rgba(37, 211, 102, 0.15); border-radius: 12px; display: flex; justify-content: center; align-items: center;">
-        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 26px;"></i>
-      </div>
-      <div>
-        <h3 style="color: #ffffff; margin: 0; font-size: 16px; font-weight: 600; font-family: 'Poppins', sans-serif;">SMS & WA Portal</h3>
-        <p style="color: #94a3b8; margin: 2px 0 0 0; font-size: 13px; font-family: 'Poppins', sans-serif;">Student Messaging System</p>
-      </div>
-    </div>
-    <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-      <i class="fas fa-chevron-right" style="color: #25D366; font-size: 14px;"></i>
-    </div>
-  </div>
+                  <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 18px 20px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-left: 4px solid #25D366; cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                      <div style="width: 48px; height: 48px; background: rgba(37, 211, 102, 0.15); border-radius: 12px; display: flex; justify-content: center; align-items: center;">
+                        <span class="material-symbols-rounded" style="color: #25D366; font-size: 26px;">chat</span>
+                      </div>
+                      <div>
+                        <h3 style="color: #ffffff; margin: 0; font-size: 16px; font-weight: 600;">SMS & WA Portal</h3>
+                        <p style="color: #94a3b8; margin: 2px 0 0 0; font-size: 13px;">Student Messaging System</p>
+                      </div>
+                    </div>
+                  </div>
                 </a>
                 
                 <a href="https://script.google.com/macros/s/AKfycby7jC80yVGPERc3m-t6iHaz47NilElqeMaTtDBekIrc_wC3UQg94KhU2kL5gh6N90Vy/exec?page=admin" class="card">
@@ -521,9 +512,9 @@
                 </a>
 
                 <a href="https://script.google.com/macros/s/AKfycbxnsJ4fDhK8-gcf3PT1346KBd-FMpjFBU1B8GgN1aPAcSjOalYsrQTZrYyEBk2OSTZr/exec?page=admin&hl=en-US" class="card">
-    <div class="icon-box c-hw"><span class="material-symbols-rounded">menu_book</span></div>
-    <h3 data-en="Homework Portal" data-hi="होमवर्क पोर्टल">Homework Portal</h3>
-    <p data-en="Upload assignments" data-hi="असाइनमेंट अपलोड करें">Upload assignments</p>
+                    <div class="icon-box c-hw"><span class="material-symbols-rounded">menu_book</span></div>
+                    <h3 data-en="Homework Portal" data-hi="होमवर्क पोर्टल">Homework Portal</h3>
+                    <p data-en="Upload assignments" data-hi="असाइनमेंट अपलोड करें">Upload assignments</p>
                 </a>
 
                 <a href="https://script.google.com/macros/s/AKfycbxv6S_OHsxQG5t3EftnyClpNL_2f4pxjUeEE9RE0JV6a-S9Eitmwe3-Al9kwIGdwLzs4A/exec?=admin&hl=en-US" class="card">
@@ -531,23 +522,20 @@
                     <h3 data-en="Half Yearly" data-hi="हाफ ईयरली">Half Yearly</h3>
                     <p data-en="Half yearly exams" data-hi="अर्धवार्षिक एग्जाम कंट्रोल">Half yearly exams</p>
                 </a>
+
                 <a href="https://gpsdhankoli.github.io/Online-test/cbt-admin.html" target="_blank" style="text-decoration: none;">
-  <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 15px 20px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid #B85324; cursor: pointer; transition: transform 0.2s;">
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <div style="width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; justify-content: center; align-items: center;">
-        <i class="fas fa-user-shield" style="color: #ffffff; font-size: 20px;"></i>
-      </div>
-      <div>
-        <h3 style="color: #ffffff; margin: 0; font-size: 16px; font-weight: 600; font-family: 'Poppins', sans-serif;">CBT Admin Panel</h3>
-        <p style="color: rgba(255,255,255,0.7); margin: 2px 0 0 0; font-size: 12px; font-family: 'Poppins', sans-serif;">Manage Tests & Results</p>
-      </div>
-    </div>
-    <div style="width: 30px; height: 30px; background: #B85324; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-      <i class="fas fa-chevron-right" style="color: white; font-size: 12px;"></i>
-    </div>
-  </div>
+                  <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 15px 20px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 4px solid #B85324; cursor: pointer; transition: transform 0.2s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                      <div style="width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                        <span class="material-symbols-rounded" style="color: #ffffff; font-size: 22px;">admin_panel_settings</span>
+                      </div>
+                      <div>
+                        <h3 style="color: #ffffff; margin: 0; font-size: 16px; font-weight: 600;">CBT Admin Panel</h3>
+                        <p style="color: rgba(255,255,255,0.7); margin: 2px 0 0 0; font-size: 12px;">Manage Tests & Results</p>
+                      </div>
+                    </div>
+                  </div>
                 </a>
-                
 
                 <a href="https://script.google.com/macros/s/AKfycbzvwevN3OXU4U64_4pQU9bC-rNattaSjSX0SYu6NbXJTzc5XUxdFEIHIhoGfAaMg8ANig/exec?page=admin&hl=en-US" class="card">
                     <div class="icon-box c-ann"><span class="material-symbols-rounded">assessment</span></div>
@@ -663,7 +651,7 @@
             }
         }
 
-        // --- 3. Live Clock ---
+         // --- 3. Live Clock ---
         function updateClock() {
             const now = new Date();
             let hours = now.getHours();
@@ -676,7 +664,6 @@
         }
         setInterval(updateClock, 1000);
         updateClock();
-
 
         // --- 4. Firebase Helpdesk Admin Logic ---
         let hdFirebaseInitialized = false;
@@ -804,23 +791,18 @@
         const installBtn = document.getElementById('installAppBtn');
 
         window.addEventListener('beforeinstallprompt', (e) => {
-            // गूगल क्रोम के डिफ़ॉल्ट प्रॉम्प्ट को रोकें
             e.preventDefault();
-            // इवेंट को सेव करें ताकि बाद में ट्रिगर किया जा सके
             deferredPrompt = e;
-            // अपना "Install App" बटन दिखाएं
             installBtn.style.display = 'flex'; 
         });
 
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
-                // इंस्टॉल प्रॉम्प्ट दिखाएं
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 if (outcome === 'accepted') {
                     console.log('Admin App installed');
                 }
-                // प्रॉम्प्ट का काम हो गया, इसे क्लियर करें और बटन छुपा दें
                 deferredPrompt = null;
                 installBtn.style.display = 'none';
             }
@@ -834,39 +816,323 @@
                 .catch(err => console.log('Service Worker Error: ', err));
             });
         }
-  <!-- ====== START: DIWALI SPECIAL SCHOOL POP-UP ====== -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-<style>
-  #schoolDiwaliOverlay { position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,0.82); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:16px; font-family:sans-serif; }
-  .sd-card { position:relative; max-width:540px; width:100%; border-radius:24px; padding:32px 24px; text-align:center; color:#fff; background:radial-gradient(circle at 50% 25%, #6e0f33 0%, #38061c 55%, #16041a 100%); border:2px solid rgba(255,215,0,0.55); box-shadow:0 0 60px rgba(255,183,3,0.4); animation:sdPop 0.6s ease forwards; overflow:hidden; }
-  @keyframes sdPop { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
-  .sd-title { font-family:'Cinzel Decorative',serif; font-size:clamp(26px,5vw,42px); font-weight:900; margin:4px 0; background:linear-gradient(90deg,#BF953F,#FCF6BA,#B38728,#FBF5B7); -webkit-background-clip:text; color:transparent; }
-  .sd-script { font-family:'Great Vibes',cursive; font-size:28px; color:#FDE047; margin:0; }
-  .sd-msg { font-family:'Playfair Display',serif; font-size:15px; line-height:1.6; color:#FEF3C7; margin:14px auto; max-width:440px; }
-  .sd-badge { display:inline-block; padding:6px 14px; border-radius:99px; background:rgba(245,158,11,0.2); border:1px solid rgba(255,215,0,0.4); color:#FDE047; font-size:13px; margin-bottom:10px; }
-  .sd-btn { margin-top:18px; padding:12px 28px; border-radius:99px; border:none; background:linear-gradient(135deg,#FFD700,#D97706); color:#111; font-weight:bold; font-size:15px; cursor:pointer; box-shadow:0 6px 20px rgba(245,158,11,0.5); }
-  .sd-flame { transform-origin:bottom center; animation:sdFlicker 1.2s infinite alternate; }
-  @keyframes sdFlicker { 0% { transform:scale(1) rotate(-2deg); } 100% { transform:scale(0.95,1.08) rotate(2deg); } }
-</style>
-
-<div id="schoolDiwaliOverlay">
-  <div class="sd-card">
-    <div class="sd-badge">🏫 GURUKUL SENIOR SECONDARY SCHOOL DHANKOLI </div>
-    <p class="sd-script">Wishing You a Joyous & Bright</p>
-    <h1 class="sd-title">SHUBH DEEPAWALI</h1>
-    <p class="sd-msg">May the divine light of Deepavali illuminate your life with wisdom, joy, health, and endless success. Wishing all students, parents & teachers a blessed & safe Diwali!</p>
-    <div class="sd-badge" style="background:rgba(0,0,0,0.35);">✨ Diwali Break:  ✨</div>
-    <div style="display:flex;justify-content:center;gap:24px;margin:16px 0;">
-      <svg width="70" height="70" viewBox="0 0 100 100">
-        <path class="sd-flame" d="M50 10 C64 30 66 45 50 54 C34 45 36 30 50 10 Z" fill="#F59E0B"/>
-        <path class="sd-flame" d="M50 22 C57 35 58 45 50 52 C42 45 43 35 50 22 Z" fill="#FFF"/>
-        <path d="M12 54 Q50 66 88 54 Q80 86 50 86 Q20 86 12 54 Z" fill="#92400E" stroke="#FFD700" stroke-width="2.5"/>
-      </svg>
-    </div>
-    <button class="sd-btn" onclick="document.getElementById('schoolDiwaliOverlay').remove()">✨ Continue to School Website →</button>
-  </div>
-</div>
-<!-- ====== END: DIWALI SPECIAL SCHOOL POP-UP ====== -->
     </script>
+
+    <!-- ====== START: DIWALI SPECIAL SCHOOL POP-UP (OUTSIDE SCRIPT) ====== -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+      #schoolDiwaliOverlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        background: rgba(8, 2, 15, 0.86);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        overflow: hidden;
+      }
+      #diwaliFwCanvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .sd-card {
+        position: relative;
+        z-index: 2;
+        max-width: 520px;
+        width: 100%;
+        border-radius: 26px;
+        padding: 34px 22px 26px;
+        text-align: center;
+        color: #fff;
+        background: radial-gradient(circle at 50% 25%, #6e0f33 0%, #38061c 55%, #16041a 100%);
+        border: 2px solid rgba(255, 215, 0, 0.65);
+        box-shadow: 0 0 65px rgba(255, 183, 3, 0.45), inset 0 0 30px rgba(255, 215, 0, 0.18);
+        animation: sdPop 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        overflow: hidden;
+      }
+      @keyframes sdPop {
+        from { opacity: 0; transform: scale(0.8) translateY(20px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .sd-mandala {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 380px;
+        height: 380px;
+        transform: translate(-50%, -50%);
+        opacity: 0.12;
+        pointer-events: none;
+        animation: sdSpin 36s linear infinite;
+      }
+      @keyframes sdSpin {
+        from { transform: translate(-50%, -50%) rotate(0deg); }
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      .sd-lantern {
+        position: absolute;
+        top: -6px;
+        width: 44px;
+        transform-origin: top center;
+        animation: sdSway 3.2s ease-in-out infinite alternate;
+        filter: drop-shadow(0 0 10px rgba(255, 180, 0, 0.8));
+        pointer-events: none;
+      }
+      .sd-lantern.left { left: 16px; }
+      .sd-lantern.right { right: 16px; animation-delay: -1.5s; }
+      @keyframes sdSway {
+        0% { transform: rotate(-6deg); }
+        100% { transform: rotate(6deg); }
+      }
+      .sd-title {
+        font-family: 'Cinzel Decorative', serif;
+        font-size: clamp(24px, 5.5vw, 38px);
+        font-weight: 900;
+        margin: 6px 0;
+        background: linear-gradient(90deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #BF953F);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: sdShine 3s linear infinite;
+      }
+      @keyframes sdShine {
+        to { background-position: 200% center; }
+      }
+      .sd-script {
+        font-family: 'Great Vibes', cursive;
+        font-size: 27px;
+        color: #FDE047;
+        margin: 4px 0 0;
+      }
+      .sd-msg {
+        font-family: 'Playfair Display', serif;
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: #FEF3C7;
+        margin: 12px auto;
+        max-width: 430px;
+        position: relative;
+        z-index: 2;
+      }
+      .sd-badge {
+        display: inline-block;
+        padding: 6px 14px;
+        border-radius: 99px;
+        background: rgba(245, 158, 11, 0.22);
+        border: 1px solid rgba(255, 215, 0, 0.5);
+        color: #FDE047;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 2;
+      }
+      .sd-diyas {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 18px;
+        margin: 14px 0 10px;
+        position: relative;
+        z-index: 2;
+      }
+      .sd-diya-svg {
+        cursor: pointer;
+        transition: transform 0.2s;
+        filter: drop-shadow(0 4px 12px rgba(245, 158, 11, 0.6));
+      }
+      .sd-diya-svg:hover { transform: scale(1.12); }
+      .sd-flame {
+        transform-origin: bottom center;
+        animation: sdFlicker 1.1s infinite alternate;
+      }
+      @keyframes sdFlicker {
+        0% { transform: scale(1) rotate(-2deg); }
+        100% { transform: scale(0.94, 1.09) rotate(2deg); }
+      }
+      .sd-btn {
+        margin-top: 12px;
+        padding: 12px 28px;
+        border-radius: 99px;
+        border: 1px solid #FEF08A;
+        background: linear-gradient(135deg, #FFD700, #D97706);
+        color: #111;
+        font-weight: 800;
+        font-size: 14.5px;
+        cursor: pointer;
+        box-shadow: 0 6px 22px rgba(245, 158, 11, 0.55);
+        transition: transform 0.2s;
+        position: relative;
+        z-index: 2;
+      }
+      .sd-btn:active { transform: scale(0.95); }
+      .sd-close-x {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 215, 0, 0.4);
+        background: rgba(0, 0, 0, 0.4);
+        color: #FDE047;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 5;
+      }
+    </style>
+
+    <div id="schoolDiwaliOverlay">
+      <canvas id="diwaliFwCanvas"></canvas>
+      <div class="sd-card">
+        <button class="sd-close-x" onclick="closeDiwaliPopup()">✕</button>
+
+        <!-- Rotating Mandala Background -->
+        <svg class="sd-mandala" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="88" fill="none" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <circle cx="100" cy="100" r="65" fill="none" stroke="#FFD700" stroke-width="1.2"/>
+          <g stroke="#FFD700" stroke-width="1" fill="none">
+            <ellipse cx="100" cy="100" rx="80" ry="25"/>
+            <ellipse cx="100" cy="100" rx="80" ry="25" transform="rotate(45 100 100)"/>
+            <ellipse cx="100" cy="100" rx="80" ry="25" transform="rotate(90 100 100)"/>
+            <ellipse cx="100" cy="100" rx="80" ry="25" transform="rotate(135 100 100)"/>
+          </g>
+        </svg>
+
+        <!-- Hanging Aakash Kandils (Lanterns) -->
+        <svg class="sd-lantern left" viewBox="0 0 60 120">
+          <line x1="30" y1="0" x2="30" y2="25" stroke="#FFD700" stroke-width="2"/>
+          <polygon points="15,25 45,25 54,55 45,85 15,85 6,55" fill="#E11D48" stroke="#FFD700" stroke-width="2"/>
+          <circle cx="30" cy="55" r="10" fill="#FEF08A"/>
+          <line x1="20" y1="85" x2="18" y2="112" stroke="#F59E0B" stroke-width="2"/>
+          <line x1="30" y1="85" x2="30" y2="116" stroke="#FFD700" stroke-width="2"/>
+          <line x1="40" y1="85" x2="42" y2="112" stroke="#F59E0B" stroke-width="2"/>
+        </svg>
+
+        <svg class="sd-lantern right" viewBox="0 0 60 120">
+          <line x1="30" y1="0" x2="30" y2="25" stroke="#FFD700" stroke-width="2"/>
+          <polygon points="15,25 45,25 54,55 45,85 15,85 6,55" fill="#D97706" stroke="#FFD700" stroke-width="2"/>
+          <circle cx="30" cy="55" r="10" fill="#FEF08A"/>
+          <line x1="20" y1="85" x2="18" y2="112" stroke="#E11D48" stroke-width="2"/>
+          <line x1="30" y1="85" x2="30" y2="116" stroke="#FFD700" stroke-width="2"/>
+          <line x1="40" y1="85" x2="42" y2="112" stroke="#E11D48" stroke-width="2"/>
+        </svg>
+
+        <div class="sd-badge">🏫 GURUKUL SENIOR SECONDARY SCHOOL DHANKOLI</div>
+        <p class="sd-script">Wishing You a Joyous & Bright</p>
+        <h1 class="sd-title">SHUBH DEEPAWALI</h1>
+        <p class="sd-msg">
+          May the divine light of Deepavali illuminate your life with wisdom, joy, health, and endless success. Wishing all students, parents & teachers a blessed & safe Diwali!
+        </p>
+        <div class="sd-badge" style="background:rgba(0,0,0,0.4);">✨ रोशनी और खुशियों का पावन पर्व शुभ दीपावली ✨</div>
+
+        <!-- 3 Interactive Diyas -->
+        <div class="sd-diyas">
+          <svg class="sd-diya-svg" width="58" height="58" viewBox="0 0 100 100" onclick="diwaliBurst(event)">
+            <path class="sd-flame" d="M50 12 C62 30 64 45 50 54 C36 45 38 30 50 12 Z" fill="#F59E0B"/>
+            <path class="sd-flame" d="M50 24 C56 35 57 45 50 52 C43 45 44 35 50 24 Z" fill="#FFF"/>
+            <path d="M12 54 Q50 66 88 54 Q80 86 50 86 Q20 86 12 54 Z" fill="#92400E" stroke="#FFD700" stroke-width="2.5"/>
+          </svg>
+          <svg class="sd-diya-svg" width="76" height="76" viewBox="0 0 100 100" onclick="diwaliBurst(event)">
+            <path class="sd-flame" d="M50 8 C65 28 67 45 50 54 C33 45 35 28 50 8 Z" fill="#F59E0B"/>
+            <path class="sd-flame" d="M50 20 C58 34 59 45 50 52 C41 45 42 34 50 20 Z" fill="#FFF"/>
+            <path d="M10 54 Q50 68 90 54 Q82 88 50 88 Q18 88 10 54 Z" fill="#B45309" stroke="#FFD700" stroke-width="3"/>
+          </svg>
+          <svg class="sd-diya-svg" width="58" height="58" viewBox="0 0 100 100" onclick="diwaliBurst(event)">
+            <path class="sd-flame" d="M50 12 C62 30 64 45 50 54 C36 45 38 30 50 12 Z" fill="#F59E0B"/>
+            <path class="sd-flame" d="M50 24 C56 35 57 45 50 52 C43 45 44 35 50 24 Z" fill="#FFF"/>
+            <path d="M12 54 Q50 66 88 54 Q80 86 50 86 Q20 86 12 54 Z" fill="#92400E" stroke="#FFD700" stroke-width="2.5"/>
+          </svg>
+        </div>
+
+        <button class="sd-btn" onclick="closeDiwaliPopup()">✨ Continue to Admin Portal →</button>
+      </div>
+    </div>
+
+    <script>
+      // Diwali Fireworks Animation Logic
+      (function() {
+        const canvas = document.getElementById('diwaliFwCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animId;
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const colors = ['#FFD700', '#FF4D6D', '#FF9F1C', '#2EC4B6', '#FDE047', '#FB5607'];
+
+        function spawnFirework(x, y) {
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          for (let i = 0; i < 36; i++) {
+            const angle = (Math.PI * 2 * i) / 36;
+            const speed = 1.5 + Math.random() * 3.5;
+            particles.push({
+              x, y,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              alpha: 1,
+              color,
+              size: 2 + Math.random() * 2
+            });
+          }
+        }
+
+        window.diwaliBurst = function(e) {
+          const rect = e.currentTarget.getBoundingClientRect();
+          spawnFirework(rect.left + rect.width / 2, rect.top + 10);
+        };
+
+        window.closeDiwaliPopup = function() {
+          cancelAnimationFrame(animId);
+          const overlay = document.getElementById('schoolDiwaliOverlay');
+          if (overlay) overlay.remove();
+        };
+
+        let tick = 0;
+        function animateFw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          tick++;
+          if (tick % 45 === 0) {
+            spawnFirework(
+              Math.random() * canvas.width * 0.8 + canvas.width * 0.1,
+              Math.random() * canvas.height * 0.5 + 60
+            );
+          }
+          for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.04;
+            p.alpha -= 0.018;
+            if (p.alpha <= 0) {
+              particles.splice(i, 1);
+              continue;
+            }
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          animId = requestAnimationFrame(animateFw);
+        }
+        spawnFirework(window.innerWidth / 2, window.innerHeight * 0.25);
+        animateFw();
+      })();
+    </script>
+    <!-- ====== END: DIWALI SPECIAL SCHOOL POP-UP ====== -->
+
 </body>
 </html>
